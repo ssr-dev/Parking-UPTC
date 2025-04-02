@@ -4,15 +4,15 @@ public class Receptionist {
     public String lastName;
     public String phoneNumber;
     public String address;
-    public String nameParking; //cambiar
+    public Parking assignedParking;
 
-    public Receptionist(String id, String firstName, String lastName, String phoneNumber, String address, String nameParking){
+    public Receptionist(String id, String firstName, String lastName, String phoneNumber, String address, Parking assignedParking){
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        this.nameParking = nameParking;
+        this.assignedParking = assignedParking;
     }
 
     public String getId() {
@@ -54,21 +54,14 @@ public class Receptionist {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    public String getNameParking() {
-        return nameParking;
-    }
-
-    public void setNameParking(String nameParking) {
-        this.nameParking = nameParking;
-    }
-
+    
     public void entryVehicle(String plate){
+        //metodo de agregar vehiculo
 
     }
 
     public void exitVehicle(String plate){
-
+        //remove vehicule, precio...
     }
 
 }

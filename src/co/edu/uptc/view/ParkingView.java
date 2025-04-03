@@ -1,43 +1,37 @@
 package co.edu.uptc.view;
 
+import co.edu.uptc.view.panels.LoginPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class ParkingView extends JFrame {
-        JFrame frame = new JFrame();
+    private CardLayout cardLayout;
+    private JPanel mainPanel;
 
-    public ParkingView(){
-        createFrame();
+    public ParkingView() {
+        setTitle("Sistema de parking UPTC");
+        setSize(800, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setResizable(false);
+
+        cardLayout = new CardLayout();
+        mainPanel = new JPanel(cardLayout);
+
+        LoginPanel loginPanel = new LoginPanel();
+        addPanel(loginPanel, "Login");
+
+        getContentPane().add(mainPanel);
+        setVisible(true);
     }
 
-    public void createFrame() {
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
-        frame.setTitle("Parking View");
-        JOptionPane.showMessageDialog(frame, "Parking View", "Parking View", JOptionPane.OK_OPTION);
-        userlogInFrame();
+    public void showPanel(String panelName) {
+        cardLayout.show(mainPanel, panelName);
     }
 
-    public void modifyFrame(String title, JPanel panel) {
-        frame.setVisible(false);
-        frame.setTitle(title);
-        frame.add(panel);
-        frame.setVisible(true);
+    public void addPanel(JPanel panel, String panelName) {
+        mainPanel.add(panel, panelName);
     }
-
-    public void userlogInFrame(){
-        JPanel loginPanel = new JPanel();
-        JButton loginButton = new JButton("Login");
-        loginPanel.add(loginButton);
-        modifyFrame("Login", loginPanel);
-
-    }
-
-    public void userlogOutFrame(){
-        JPanel logOutPanel = new JPanel();
-        JButton logoutButton = new JButton("Logout");
-        logOutPanel.add(logoutButton);
-        modifyFrame("Logout", logOutPanel);
-    }
-
 }
+

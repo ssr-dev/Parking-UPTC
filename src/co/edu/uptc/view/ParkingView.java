@@ -20,8 +20,8 @@ public class ParkingView extends JFrame {
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
-        AdminMenuPanel adminMenuPanel = new AdminMenuPanel();
-        addPanel(adminMenuPanel, "Admin Menu");
+        LoginPanel loginPanel = new LoginPanel();
+        addPanel(loginPanel,"Login");
 
         getContentPane().add(mainPanel);
         setVisible(true);

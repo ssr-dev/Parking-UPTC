@@ -1,5 +1,6 @@
 package co.edu.uptc.view;
 
+import co.edu.uptc.view.panels.AdminMenuPanel;
 import co.edu.uptc.view.panels.LoginPanel;
 
 import javax.swing.*;
@@ -19,8 +20,8 @@ public class ParkingView extends JFrame {
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
-        LoginPanel loginPanel = new LoginPanel();
-        addPanel(loginPanel, "Login");
+        AdminMenuPanel adminMenuPanel = new AdminMenuPanel();
+        addPanel(adminMenuPanel, "Admin Menu");
 
         getContentPane().add(mainPanel);
         setVisible(true);

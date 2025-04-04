@@ -14,6 +14,7 @@ public class LoginPanel extends JPanel {
         txtUsername = new JTextField(15);
         txtPassword = new JPasswordField(15);
         loginButton = new JButton("Iniciar sesión");
+        addComponentsToPanel();
     }
 
     public void addComponentsToPanel() {

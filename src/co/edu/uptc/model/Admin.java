@@ -23,10 +23,11 @@ public class Admin extends User{
     }
 
     
-    public void modifyReceptionistCridentials(String id, Receptionist receptionist){
+    public void modifyReceptionistCredentials(String id, Receptionist receptionist){
+        if (objSystem.searchUser(id, 1)==null){
+            
 
-        
-        
+        }
     }
 
    public boolean checkPassword(String newPassword, String previousPassword){

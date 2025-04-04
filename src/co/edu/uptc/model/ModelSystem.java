@@ -28,13 +28,13 @@ public class ModelSystem {
     }
 
     private boolean validateLogIn(String username, String password){
-        return searchUser(username, SEARCH_BY_USERNAME).getPassword.equals(password); //falta agregar los get en User
+        return searchUser(username, SEARCH_BY_USERNAME).getPassword().equals(password); //falta agregar los get en User
     }
 
-    private User searchUser(String key, int searchMethod){
+    public User searchUser(String key, int searchMethod){
         if(searchMethod == 0){
             for (User user : users) {
-                if (user.getUsername.equals(key)) { //falta agregar los get en User
+                if (user.getUsername().equals(key)) { //falta agregar los get en User
                     return user;
                 }
             }
@@ -42,11 +42,12 @@ public class ModelSystem {
             for (User user : users) {
                 if (user instanceof Receptionist) { //falta herencia de User
                     Receptionist r = (Receptionist) user;
-                    if (r.getId.equals(key)) { //falta agregar los get en User
+                    if (r.getId().equals(key)) { //falta agregar los get en User
                         return r;
                     }
                 }
             }
+            
         }
 
         return null;

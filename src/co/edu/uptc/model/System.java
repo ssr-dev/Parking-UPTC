@@ -1,3 +1,4 @@
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,6 +6,7 @@ public class System {
 
     public final int SEARCH_BY_USERNAME = 0;
     public final int SEARCH_BY_ID = 1;
+    private final int PASSWORD_LENGHT = 8;
 
     private List<Parking> parkings;
     private List<Ticket> tickets;
@@ -34,51 +36,122 @@ public class System {
             for (User user : users) {
                 if (user.getUsername.equals(key)) { //falta agregar los get en User
                     return user;
-                }else{
-                    return null;
                 }
             }
         }else if (searchMethod == 1){
             for (User user : users) {
-                if (user.getId.equals(key)) { //falta agregar los get en User
-                    return user;
-                }else{
-                    return null;
+                if (user instanceof Receptionist) { //falta herencia de User
+                    Receptionist r = (Receptionist) user;
+                    if (r.getId.equals(key)) { //falta agregar los get en User
+                        return r;
+                    }
                 }
+            }
+        }
+
+        return null;
+    }
+
+    public void addParking(Parking parking){
+        this.parkings.add(parking);
+    }
+
+    public String createUsername(Receptionist r){
+        String username = r.getFirstName() + "_" + r.getLastName();
+        boolean unique = false;
+        int index = 2;
+
+        while (unique == false) { 
+            if (!checkExistingUsername(username)) {
+                unique = true;
+            }else{
+                username = username + "index";
+                index++;
+            }
+        }
+
+        return username;
+    }
+
+    private boolean checkExistingUsername(String username){
+        boolean existing = false;
+        int index = 0;
+        while (existing = false) { 
+            if(this.users.get(index).getUsername().equals(username)){
+                existing = true;
+            }else{
+                index++;
             }
         }
     }
 
-    public void addParking(Parking parking){
-        parkings.add(parking);
-    }
+    public String createPassword(){
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        SecureRandom random = new SecureRandom();
+        StringBuilder password = new StringBuilder(PASSWORD_LENGHT);
 
-    private void createUsername(User user){
+        for (int i = 0; i < PASSWORD_LENGHT; i++) {
+            int index = random.nextInt(characters.length());
+            password.append(characters.charAt(index));
+        }
 
-    }
-
-    private void createPassword(User user){
-
+        return password.toString();
     }
 
     public void addReceptionist(Receptionist receptionist){
-        users.add(receptionist);
+        this.users.add(receptionist); // falta herencia de User
     }
 
-    private Ticket[] getReport(Date date){
+    public List<Ticket> getReport(Date date){
+        List<Ticket> report = new ArrayList<>();
 
+        for (Ticket ticket : tickets) {
+            if (ticket.getDate().equals(date)) {
+                report.add(ticket);
+            }
+        }
+
+        return report;
     }
 
-    private Ticket[] getReport(Date date, Receptionist receptionist){
+    public List<Ticket> getReport(Date date, Receptionist receptionist){
+        List<Ticket> report = new ArrayList<>();
 
+        for (Ticket ticket : tickets) {
+            if (ticket.getDate().equals(date) && ticket.getReceptionist().equals(receptionist)) {
+                report.add(ticket);
+            }
+        }
+
+        return report;
     }
 
-    private int getTotalEntries(Ticket[] records){
+    public List<Receptionist> getReportReceptionists(List<Ticket> report){
+        List<Receptionist> receptionists = new ArrayList<>();
 
+        String receptionistUsername = report.get(0).getUsername(); // Falta getters de Receptionist
+
+        for (Ticket ticket : report) {
+            if (ticket.getReceptionist().getUsername().equals(receptionistUsername)) {
+                receptionists.add(ticket.getReceptionist()); // Falta getters de Ticket
+            }
+        }
+
+        return receptionists;
     }
 
-    private Double getTotalEarnings(Ticket[] records){
-
+    public int getTotalEntries(List<Ticket> records){
+        return records.size();
     }
 
+    public Double getTotalEarnings(List<Ticket> records){
+        Double earnings = 0.0;
+
+        for (Ticket ticket : records) {
+            earnings = earnings + ticket.getPrice(); // Faltan getters de Ticket
+        }
+
+        return earnings;
+    }
+    
 }

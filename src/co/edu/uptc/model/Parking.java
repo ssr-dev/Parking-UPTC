@@ -14,13 +14,13 @@ public class Parking {
 
     }
 
-    public Parking(String name, String address, int availableLots, Double priceByHour, Schedule[] schedules){
+    public Parking(String name, String address, int availableLots, Double priceByHour, List<Schedule> schedules){
         this.name = name;
         this.address = address;
         this.availableLots = availableLots;
         this.priceByHour = priceByHour;
         this.vehicles = new ArrayList<>();
-        this.schedules = new ArrayList<>();
+        this.schedules = schedules;
     }
 
     private void addVehicle(){

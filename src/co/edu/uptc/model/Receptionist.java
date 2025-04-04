@@ -5,6 +5,11 @@ public class Receptionist extends User{
     public String phoneNumber;
     public String address;
     public Parking assignedParking;
+    private Parking objParking;
+
+    public Receptionist(){
+        objParking = new Parking();
+    }
 
     public Receptionist(String id, String firstName, String lastName, String phoneNumber, String address, Parking assignedParking){
         this.id = id;
@@ -56,12 +61,13 @@ public class Receptionist extends User{
     }
     
     public void entryVehicle(String plate){
-        //metodo de agregar vehiculo
-
+        Vehicle vehicle = new Vehicle();
+        objParking.addVehicle(vehicle);
     }
 
     public void exitVehicle(String plate){
-        //remove vehicule, precio...
+        objParking.removeVehicle(plate);
+        
     }
 
 }

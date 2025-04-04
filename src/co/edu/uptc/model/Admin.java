@@ -22,12 +22,18 @@ public class Admin extends User{
         String password = objSystem.createPassword();
     }
 
-    
-    public void modifyReceptionistCredentials(String id, Receptionist receptionist){
-        if (objSystem.searchUser(id, 1)==null){
-            
 
+    public boolean validateIdReceptionist(String id){
+        boolean validateId = false;
+        if (objSystem.searchUser(id, 1)==null){
+            validateId= false;
         }
+        return validateId;
+    }
+    
+    public void modifyReceptionistCredentials(String id, Receptionist receptionis, String newPassword){
+        objSystem.searchUser(id, 1).setPassword(newPassword);
+
     }
 
    public boolean checkPassword(String newPassword, String previousPassword){

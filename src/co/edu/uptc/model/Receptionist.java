@@ -1,4 +1,4 @@
-public class Receptionist {
+public class Receptionist extends User{
     public String id;
     public String firstName;
     public String lastName;

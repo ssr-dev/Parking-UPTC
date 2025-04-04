@@ -23,28 +23,41 @@ public class Parking {
         this.schedules = schedules;
     }
 
-    private void addVehicle(){
-
+    public void addVehicle(Vehicle vehicle){
+        this.vehicles.add(vehicle);
     }
 
-    private void removeVehicle(String plate){
-
+    public void removeVehicle(String plate){
+        if (searchVehicle(plate) != null) {
+            this.vehicles.remove(searchVehicle(plate));
+        }else{
+            //La view debe mostrar "no se encontró el vehiculo"
+        }
     }
 
     private Vehicle searchVehicle(String plate){
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getPlate().equals(plate)) { // Faltan getters de Vehicle
+                return vehicle;
+            }
+        }
 
-    }
-
-    private void fillSchedules(){
-
+        return null;
     }
 
     private Schedule searchSchedule(String day){
+        for (Schedule schedule : schedules) {
+            if (schedule.getDay().equals(day)) { // Faltan getters de Schedule
+                return schedule;
+            }
+        }
 
+        return null;
     }
 
-    private void modifySchedule(Schedule schedule, String openHour, String closeHour){
-        
+    private void modifySchedule(String day, String openHour, String closeHour){
+        searchSchedule(day).setOpenHour(openHour); // faltan setters de Schedule
+        searchSchedule(day).setCloseHour(closeHour); // faltan setters de Scehdule
     }
 
 }

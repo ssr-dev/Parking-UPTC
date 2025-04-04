@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,18 +9,17 @@ public class Admin extends User{
         objSystem = new System();
     }
 
-    public Parking createNewParking(String name, String address, int totalLots, Double priceByHour, Schedule[] schedule){
-        Parking parking =new Parking(name, address, totalLots, priceByHour, schedule);
+    public Parking createNewParking(String name, String address, int totalLots, Double priceByHour, List<Schedule> schedules){
+        Parking parking =new Parking(name, address, totalLots, priceByHour, schedules);
         objSystem.addParking(parking);
         return parking;
      }
 
-     public Receptionist createNewReceptionist(String id, String firstName, String lastName, String phoneNumber, String address,Parking assignedParking){
+     public void createNewReceptionist(String id, String firstName, String lastName, String phoneNumber, String address,Parking assignedParking){
         Receptionist receptionist = new Receptionist(id, firstName, lastName, phoneNumber, address, assignedParking);
         objSystem.addReceptionist(receptionist);
-        //falta crear el usuario y contraseña con los métodos de system
-        return receptionist;
-        
+        String username =objSystem.createUsername(receptionist);
+        String password = objSystem.createPassword();
     }
 
     

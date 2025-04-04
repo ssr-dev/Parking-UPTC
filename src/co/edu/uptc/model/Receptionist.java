@@ -1,10 +1,11 @@
-public class Receptionist {
+public class Receptionist extends User {
     public String id;
     public String firstName;
     public String lastName;
     public String phoneNumber;
     public String address;
     public Parking assignedParking;
+    
 
     public Receptionist(String id, String firstName, String lastName, String phoneNumber, String address, Parking assignedParking){
         this.id = id;
@@ -61,7 +62,7 @@ public class Receptionist {
     }
 
     public void exitVehicle(String plate){
-        //remove vehicule, precio...
+        //remove vehicule, calcular el precio
     }
 
 }

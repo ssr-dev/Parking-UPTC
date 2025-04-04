@@ -49,8 +49,8 @@ public class System {
         }
     }
 
-    private void addParking(Parking parking){
-
+    public void addParking(Parking parking){
+        parkings.add(parking);
     }
 
     private void createUsername(User user){
@@ -61,8 +61,8 @@ public class System {
 
     }
 
-    private void addReceptionist(Receptionist receptionist){
-
+    public void addReceptionist(Receptionist receptionist){
+        users.add(receptionist);
     }
 
     private Ticket[] getReport(Date date){

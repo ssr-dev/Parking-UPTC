@@ -2,10 +2,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Admin extends User{
-    private System objSystem;
+    private ModelSystem objSystem;
 
     public Admin(){
-        objSystem = new System();
+        objSystem = new ModelSystem();
     }
 
     public Parking createNewParking(String name, String address, int totalLots, Double priceByHour, Schedule[] schedule){

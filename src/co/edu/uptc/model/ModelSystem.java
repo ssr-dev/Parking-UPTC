@@ -2,7 +2,7 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
-public class System {
+public class ModelSystem {
 
     public final int SEARCH_BY_USERNAME = 0;
     public final int SEARCH_BY_ID = 1;
@@ -13,7 +13,7 @@ public class System {
     private List<User> users;
     private User activeUser;
 
-    public System (){
+    public ModelSystem (){
         parkings = new ArrayList<>();
         tickets = new ArrayList<>();
         users = new ArrayList<>();

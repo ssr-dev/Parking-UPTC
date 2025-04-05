@@ -41,8 +41,7 @@ public class ModelSystem {
             }
         }else if (searchMethod == 1){
             for (User user : users) {
-                if (user instanceof Receptionist) { 
-                    Receptionist r = (Receptionist) user;
+                if (user instanceof Receptionist r) {
                     if (r.getId().equals(key)) { 
                         return r;
                     }
@@ -155,6 +154,26 @@ public class ModelSystem {
         }
 
         return earnings;
+    }
+
+    public User getActiveUser() {
+        return activeUser;
+    }
+
+    public void setActiveUser(User activeUser) {
+        this.activeUser = activeUser;
+    }
+
+    public List<Parking> getParkings() {
+        return parkings;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public List<User> getUsers() {
+        return users;
     }
     
 }

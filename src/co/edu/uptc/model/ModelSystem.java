@@ -20,12 +20,15 @@ public class ModelSystem {
         users = new ArrayList<>();
     }
 
-    public void logIn(String username, String password){
+    private boolean logIn(String username, String password){
+        boolean confirmLogIn;
         if (validateLogIn(username, password)){
             this.activeUser = searchUser(username, SEARCH_BY_USERNAME);
+            confirmLogIn = true;
         }else{
-            // Llama al presenter para dar mensaje en vista "Credenciales no válidas"
+            confirmLogIn = false;
         }
+        return confirmLogIn;
     }
 
     private boolean validateLogIn(String username, String password){

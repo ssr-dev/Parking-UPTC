@@ -67,7 +67,7 @@ public class Receptionist extends User{
 
     public void exitVehicle(String plate){
         objParking.removeVehicle(plate);
-        
+
     }
 
 }

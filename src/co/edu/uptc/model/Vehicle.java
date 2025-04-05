@@ -7,6 +7,11 @@ public class Vehicle {
 
     }
 
+    public Vehicle(String plate, Ticket assignedTicket){
+        this.plate = plate;
+        this.assignedTicket = assignedTicket;
+    }
+
     public String getPlate() {
         return plate;
     }
@@ -20,11 +25,6 @@ public class Vehicle {
     }
 
     public void setAssignedTicket(Ticket assignedTicket) {
-        this.assignedTicket = assignedTicket;
-    }
-
-    public Vehicle(String plate, Ticket assignedTicket){
-        this.plate = plate;
         this.assignedTicket = assignedTicket;
     }
 

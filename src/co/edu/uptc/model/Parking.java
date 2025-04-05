@@ -37,7 +37,7 @@ public class Parking {
 
     private Vehicle searchVehicle(String plate){
         for (Vehicle vehicle : vehicles) {
-            if (vehicle.getPlate().equals(plate)) { // Faltan getters de Vehicle
+            if (vehicle.getPlate().equals(plate)) { 
                 return vehicle;
             }
         }
@@ -47,7 +47,7 @@ public class Parking {
 
     private Schedule searchSchedule(String day){
         for (Schedule schedule : schedules) {
-            if (schedule.getDay().equals(day)) { // Faltan getters de Schedule
+            if (schedule.getDay().equals(day)) { 
                 return schedule;
             }
         }
@@ -55,9 +55,57 @@ public class Parking {
         return null;
     }
 
-    private void modifySchedule(String day, String openHour, String closeHour){
-        searchSchedule(day).setOpenHour(openHour); // faltan setters de Schedule
-        searchSchedule(day).setCloseHour(closeHour); // faltan setters de Scehdule
+    public void modifySchedule(String day, String openHour, String closeHour){
+        searchSchedule(day).setOpenTime(openHour); 
+        searchSchedule(day).setCloseTime(closeHour); 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getAvailableLots() {
+        return availableLots;
+    }
+
+    public void setAvailableLots(int availableLots) {
+        this.availableLots = availableLots;
+    }
+
+    public Double getPriceByHour() {
+        return priceByHour;
+    }
+
+    public void setPriceByHour(Double priceByHour) {
+        this.priceByHour = priceByHour;
+    }
+
+    public List<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedules = schedules;
+    }
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
     }
 
 }

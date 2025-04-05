@@ -1,4 +1,5 @@
 import java.security.SecureRandom;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +9,9 @@ public class ModelSystem {
     public final int SEARCH_BY_ID = 1;
     private final int PASSWORD_LENGHT = 8;
 
-    private List<Parking> parkings;
-    private List<Ticket> tickets;
-    private List<User> users;
+    private final List<Parking> parkings;
+    private final List<Ticket> tickets;
+    private final List<User> users;
     private User activeUser;
 
     public ModelSystem (){
@@ -19,7 +20,7 @@ public class ModelSystem {
         users = new ArrayList<>();
     }
 
-    private void logIn(String username, String password){
+    public void logIn(String username, String password){
         if (validateLogIn(username, password)){
             this.activeUser = searchUser(username, SEARCH_BY_USERNAME);
         }else{
@@ -28,21 +29,21 @@ public class ModelSystem {
     }
 
     private boolean validateLogIn(String username, String password){
-        return searchUser(username, SEARCH_BY_USERNAME).getPassword().equals(password); //falta agregar los get en User
+        return searchUser(username, SEARCH_BY_USERNAME).getPassword().equals(password); 
     }
 
     public User searchUser(String key, int searchMethod){
         if(searchMethod == 0){
             for (User user : users) {
-                if (user.getUsername().equals(key)) { //falta agregar los get en User
+                if (user.getUsername().equals(key)) { 
                     return user;
                 }
             }
         }else if (searchMethod == 1){
             for (User user : users) {
-                if (user instanceof Receptionist) { //falta herencia de User
+                if (user instanceof Receptionist) { 
                     Receptionist r = (Receptionist) user;
-                    if (r.getId().equals(key)) { //falta agregar los get en User
+                    if (r.getId().equals(key)) { 
                         return r;
                     }
                 }
@@ -66,7 +67,7 @@ public class ModelSystem {
             if (!checkExistingUsername(username)) {
                 unique = true;
             }else{
-                username = username + "index";
+                username = username + index;
                 index++;
             }
         }
@@ -75,15 +76,16 @@ public class ModelSystem {
     }
 
     private boolean checkExistingUsername(String username){
-        boolean existing = false;
         int index = 0;
-        while (existing = false) { 
+        while (index < this.users.size()) { 
             if(this.users.get(index).getUsername().equals(username)){
-                existing = true;
-            }else{
-                index++;
+                return true;
             }
+
+            index++;
         }
+
+        return false;
     }
 
     public String createPassword(){
@@ -100,14 +102,14 @@ public class ModelSystem {
     }
 
     public void addReceptionist(Receptionist receptionist){
-        this.users.add(receptionist); // falta herencia de User
+        this.users.add(receptionist); 
     }
 
-    public List<Ticket> getReport(Date date){
+    public List<Ticket> getReport(LocalDate date){
         List<Ticket> report = new ArrayList<>();
 
         for (Ticket ticket : tickets) {
-            if (ticket.getDate().equals(date)) {
+            if (ticket.getEntryDate().equals(date)) {
                 report.add(ticket);
             }
         }
@@ -115,11 +117,11 @@ public class ModelSystem {
         return report;
     }
 
-    public List<Ticket> getReport(Date date, Receptionist receptionist){
+    public List<Ticket> getReport(LocalDate date, Receptionist receptionist){
         List<Ticket> report = new ArrayList<>();
 
         for (Ticket ticket : tickets) {
-            if (ticket.getDate().equals(date) && ticket.getReceptionist().equals(receptionist)) {
+            if (ticket.getEntryDate().equals(date) && ticket.getReceptionist().equals(receptionist)) {
                 report.add(ticket);
             }
         }
@@ -130,11 +132,11 @@ public class ModelSystem {
     public List<Receptionist> getReportReceptionists(List<Ticket> report){
         List<Receptionist> receptionists = new ArrayList<>();
 
-        String receptionistUsername = report.get(0).getUsername(); // Falta getters de Receptionist
+        String receptionistUsername = report.get(0).getReceptionist().getUsername();
 
         for (Ticket ticket : report) {
             if (ticket.getReceptionist().getUsername().equals(receptionistUsername)) {
-                receptionists.add(ticket.getReceptionist()); // Falta getters de Ticket
+                receptionists.add(ticket.getReceptionist()); 
             }
         }
 
@@ -149,7 +151,7 @@ public class ModelSystem {
         Double earnings = 0.0;
 
         for (Ticket ticket : records) {
-            earnings = earnings + ticket.getPrice(); // Faltan getters de Ticket
+            earnings = earnings + ticket.getPrice();
         }
 
         return earnings;

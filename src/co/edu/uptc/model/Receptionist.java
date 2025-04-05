@@ -1,14 +1,13 @@
 public class Receptionist extends User{
-    public String id;
-    public String firstName;
-    public String lastName;
-    public String phoneNumber;
-    public String address;
-    public Parking assignedParking;
-    private Parking objParking;
+    private String id;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String address;
+    private Parking assignedParking;
 
     public Receptionist(){
-        objParking = new Parking();
+
     }
 
     public Receptionist(String id, String firstName, String lastName, String phoneNumber, String address, Parking assignedParking){
@@ -18,6 +17,16 @@ public class Receptionist extends User{
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.assignedParking = assignedParking;
+    }
+
+    public void entryVehicle(String plate){
+        Vehicle vehicle = new Vehicle();
+        assignedParking.addVehicle(vehicle);
+    }
+
+    public void exitVehicle(String plate){
+        assignedParking.removeVehicle(plate);
+
     }
 
     public String getId() {
@@ -59,15 +68,13 @@ public class Receptionist extends User{
     public void setAddress(String address) {
         this.address = address;
     }
-    
-    public void entryVehicle(String plate){
-        Vehicle vehicle = new Vehicle();
-        objParking.addVehicle(vehicle);
+
+    public Parking getAssignedParking() {
+        return assignedParking;
     }
 
-    public void exitVehicle(String plate){
-        objParking.removeVehicle(plate);
-
+    public void setAssignedParking(Parking assignedParking) {
+        this.assignedParking = assignedParking;
     }
 
 }

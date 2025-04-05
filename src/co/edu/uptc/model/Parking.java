@@ -3,6 +3,8 @@ import java.util.List;
 
 public class Parking {
 
+    private final int CAPACITY_LIMIT = 5;
+
     private String name;
     private String address;
     private int availableLots;
@@ -58,6 +60,10 @@ public class Parking {
     public void modifySchedule(String day, String openHour, String closeHour){
         searchSchedule(day).setOpenTime(openHour); 
         searchSchedule(day).setCloseTime(closeHour); 
+    }
+
+    public boolean isCapacityAtLimit(){
+        return this.availableLots < CAPACITY_LIMIT;
     }
 
     public String getName() {

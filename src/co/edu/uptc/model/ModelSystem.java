@@ -20,18 +20,7 @@ public class ModelSystem {
         users = new ArrayList<>();
     }
 
-    private boolean logIn(String username, String password){
-        boolean confirmLogIn;
-        if (validateLogIn(username, password)){
-            this.activeUser = searchUser(username, SEARCH_BY_USERNAME);
-            confirmLogIn = true;
-        }else{
-            confirmLogIn = false;
-        }
-        return confirmLogIn;
-    }
-
-    private boolean validateLogIn(String username, String password){
+    public boolean validateLogIn(String username, String password){
         return searchUser(username, SEARCH_BY_USERNAME).getPassword().equals(password); 
     }
 

@@ -4,9 +4,12 @@ public class User {
     protected String email;
 
     public User(){
-        username ="";
-        password="";
-        email="";
+
+    }
+
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
     }
 
     public String getUsername() {

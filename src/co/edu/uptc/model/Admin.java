@@ -2,22 +2,21 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Admin extends User{
-    private final ModelSystem objSystem;
 
     public Admin(ModelSystem objSystem){
-        this.objSystem = objSystem;
+        super(objSystem);
     }
 
     public void createNewParking(String name, String address, int totalLots, Double priceByHour, List<Schedule> schedules){
-        Parking parking = new Parking(name, address, totalLots, priceByHour, schedules);
-        objSystem.addParking(parking);
+        Parking parking = new Parking(objSystem, name, address, totalLots, priceByHour, schedules);
+        objSystem.getParkings().add(parking);
     }
 
     public void createNewReceptionist(String id, String firstName, String lastName, String phoneNumber, String address,Parking assignedParking){
-        Receptionist receptionist = new Receptionist(id, firstName, lastName, phoneNumber, address, assignedParking);
+        Receptionist receptionist = new Receptionist(this.objSystem, id, firstName, lastName, phoneNumber, address, assignedParking);
         receptionist.setUsername(objSystem.createUsername(receptionist));
         receptionist.setPassword(objSystem.createPassword());
-        objSystem.addReceptionist(receptionist);
+        objSystem.getUsers().add(receptionist);
     }
 
     public boolean validIdReceptionist(String id){
@@ -40,5 +39,9 @@ public class Admin extends User{
         return Pattern.matches(pattern, newPassword);
     }
 
+    @Override
+    public String toString(){
+        return super.toString();
+    }
 
 }

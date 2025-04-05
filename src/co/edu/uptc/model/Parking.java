@@ -13,10 +13,10 @@ public class Parking {
     private List<Vehicle> vehicles;
 
     public Parking(){
-
+        
     }
 
-    public Parking(String name, String address, int availableLots, Double priceByHour, List<Schedule> schedules){
+    public Parking(ModelSystem objSystem, String name, String address, int availableLots, Double priceByHour, List<Schedule> schedules){
         this.name = name;
         this.address = address;
         this.availableLots = availableLots;
@@ -25,19 +25,13 @@ public class Parking {
         this.schedules = schedules;
     }
 
-    public void addVehicle(Vehicle vehicle){
-        this.vehicles.add(vehicle);
-    }
-
     public void removeVehicle(String plate){
         if (searchVehicle(plate) != null) {
             this.vehicles.remove(searchVehicle(plate));
-        }else{
-            //La view debe mostrar "no se encontró el vehiculo"
         }
     }
 
-    private Vehicle searchVehicle(String plate){
+    public Vehicle searchVehicle(String plate){
         for (Vehicle vehicle : vehicles) {
             if (vehicle.getPlate().equals(plate)) { 
                 return vehicle;
@@ -112,6 +106,18 @@ public class Parking {
 
     public void setVehicles(List<Vehicle> vehicles) {
         this.vehicles = vehicles;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder toString = new StringBuilder();
+        toString.append(this.name).append(", ").append(this.address).append(", ").append(this.availableLots).append(", ").append(this.priceByHour).append(", ");
+
+        for (Schedule schedule : schedules) {
+            toString.append(schedule.toString()).append(", ");
+        }
+
+        return toString.toString(); 
     }
 
 }

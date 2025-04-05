@@ -28,4 +28,9 @@ public class Vehicle {
         this.assignedTicket = assignedTicket;
     }
 
+    @Override
+    public String toString(){
+        return this.plate + "";
+    }
+
 }

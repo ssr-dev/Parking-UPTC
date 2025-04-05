@@ -2,14 +2,17 @@ public class User {
     protected String username;
     protected String password;
     protected String email;
+    protected final ModelSystem objSystem;
 
-    public User(){
-
+    public User(ModelSystem objSystem){
+        this.objSystem = objSystem;
     }
 
-    public User(String username, String password){
+    public User(ModelSystem objSystem, String username, String password){
+        this.objSystem = objSystem;
         this.username = username;
         this.password = password;
+        this.email = null;
     }
 
     public String getUsername() {
@@ -34,6 +37,11 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString(){
+        return this.username + ", " + this.password + ", " + this.email;
     }
 
 }

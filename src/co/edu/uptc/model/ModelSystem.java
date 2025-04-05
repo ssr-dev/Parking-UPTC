@@ -45,10 +45,6 @@ public class ModelSystem {
         return null;
     }
 
-    public void addParking(Parking parking){
-        this.parkings.add(parking);
-    }
-
     public String createUsername(Receptionist r){
         String username = r.getFirstName() + "_" + r.getLastName();
         boolean unique = false;
@@ -90,10 +86,6 @@ public class ModelSystem {
         }
 
         return password.toString();
-    }
-
-    public void addReceptionist(Receptionist receptionist){
-        this.users.add(receptionist); 
     }
 
     public List<Ticket> getReport(LocalDate date){

@@ -38,4 +38,9 @@ public class Schedule {
         this.closeTime = closeTime;
     }
 
+    @Override
+    public String toString(){
+        return "[" + this.day + ", " + this.openTime + ", " + this.closeTime + "]";
+    }
+
 }

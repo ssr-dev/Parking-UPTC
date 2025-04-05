@@ -4,7 +4,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Ticket {
 
-    private Vehicle vehicle;
+    private String plate;
     private Receptionist receptionist;
     private LocalDate entryDate;
     private LocalTime entryTime;
@@ -14,8 +14,8 @@ public class Ticket {
 
     }
 
-    public Ticket(Vehicle vehicle, Receptionist receptionist){
-        this.vehicle = vehicle;
+    public Ticket(String plate, Receptionist receptionist){
+        this.plate = plate;
         this.receptionist = receptionist;
         this.entryDate = LocalDate.now();
         this.entryTime = LocalTime.now();
@@ -36,7 +36,9 @@ public class Ticket {
     }
 
     public Double calculatePrice(Double price){
-        return price * calculateTime(); 
+        Double totalPrice = price * calculateTime();
+        this.price = totalPrice; 
+        return totalPrice; 
     }
 
     // Este método tiene que ir en el controller, hay que pasarlo
@@ -44,12 +46,12 @@ public class Ticket {
         return cash - calculatePrice(price);
     }
 
-    public Vehicle getVehicle() {
-        return vehicle;
+    public String getPlate() {
+        return plate;
     }
 
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
+    public void setPlate(String plate) {
+        this.plate = plate;
     }
 
     public Receptionist getReceptionist() {
@@ -84,5 +86,9 @@ public class Ticket {
         this.entryTime = entryTime;
     }
 
+    @Override
+    public String toString(){
+        return this.plate + ", " + this.receptionist.getId() + ", " + this.entryDate + ", " + this.entryTime + ", " + this.price;
+    }
 
 }

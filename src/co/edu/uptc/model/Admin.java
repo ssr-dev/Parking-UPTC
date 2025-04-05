@@ -37,16 +37,16 @@ public class Admin extends User{
     }
 
    public boolean checkPassword(String newPassword, String previousPassword){
-        boolean compareToPassword = true;
-        if (newPassword==previousPassword){
-            compareToPassword = false;
+        boolean isValidPassword  = true;
+        if (newPassword.equals(previousPassword)){
+            isValidPassword  = false;
         } else{
             String patron = "^[a-zA-Z0-9]{1,8}$";
 		    Pattern pattern = Pattern.compile(patron);
             Matcher matcher = pattern.matcher(newPassword);
-            compareToPassword = matcher.matches();
+            isValidPassword  = matcher.matches();
         }
-        return compareToPassword;
+        return isValidPassword ;
     }
 
 

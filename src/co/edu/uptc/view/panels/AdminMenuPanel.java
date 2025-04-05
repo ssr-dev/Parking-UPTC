@@ -1,25 +1,16 @@
 package co.edu.uptc.view.panels;
 
-import javax.swing.*;
-import java.awt.*;
-
 public class AdminMenuPanel extends MenuPanel {
     public AdminMenuPanel() {
-        super("Menú Administrador");
+        super("Menú Administrador", "images/AdminImage.jpeg");
     }
 
     @Override
     protected void setupButtons() {
-        addButton("Crear Recepcionista");
-        addButton("Registrar Parqueadero");
-        addButton("Cambiar Credenciales del Recepcionista");
-        addButton("Generar Reporte de Ventas");
-    }
-
-    private void addButton(String text) {
-        JButton button = new JButton(text);
-        button.setFont(new Font("Arial", Font.BOLD, 14));
-        buttonPanel.add(button);
+        addStyledButton("Crear recepcionista", 0);
+        addStyledButton("Registrar parqueadero", 1);
+        addStyledButton("Cambiar credenciales del recepcionista", 2);
+        addStyledButton("Generar reporte de ventas", 3);
     }
 }
 

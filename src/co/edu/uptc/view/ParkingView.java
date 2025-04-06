@@ -17,20 +17,23 @@ public class ParkingView extends JFrame {
 
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
-//RecepcionistMenuPanel recepcionistMenuPanel = new RecepcionistMenuPanel();
-       //addPanel(recepcionistMenuPanel,"Recepcionist");
-       //AdminMenuPanel adminMenuPanel = new AdminMenuPanel();
-        //addPanel(adminMenuPanel,"Admin");
-        //LoginPanel loginPanel = new LoginPanel();
-       //addPanel(loginPanel, "Login");
-        //CreateRecepcionistPanel createRecepcionistPanel = new CreateRecepcionistPanel();
-        //addPanel(createRecepcionistPanel,"CreateRecepcionist");
-
-        //ParkingSpacesPanel parkingSpacesPanel = new ParkingSpacesPanel(15, true);
-        //addPanel(parkingSpacesPanel,"parkingAvailabilityPanel");
-        VehicleExitPanel exitPanel = new VehicleExitPanel();
-        addPanel(exitPanel,"vehicleExitPanel");
-
+  
+  //      RecepcionistMenuPanel recepcionistMenuPanel = new RecepcionistMenuPanel();
+//        addPanel(recepcionistMenuPanel,"Recepcionist");
+     //  AdminMenuPanel adminMenuPanel = new AdminMenuPanel();
+       // addPanel(adminMenuPanel,"Admin");
+     // LoginPanel loginPanel = new LoginPanel();
+      //addPanel(loginPanel, "Login");
+//        CreateRecepcionistPanel createRecepcionistPanel = new CreateRecepcionistPanel();
+//        addPanel(createRecepcionistPanel,"CreateRecepcionist");
+//        ParkingSpacesPanel parkingSpacesPanel = new ParkingSpacesPanel(15, true);
+//        addPanel(parkingSpacesPanel,"parkingAvailabilityPanel");
+      //  VehicleExitPanel exitPanel = new VehicleExitPanel();
+        //addPanel(exitPanel,"vehicleExitPanel");
+       // RegisterParkingPanel RegisterParkingPanel=new RegisterParkingPanel();
+        //addPanel(RegisterParkingPanel, "RegisterParking");
+        ModifySchedulePanel ModifySchedule=new ModifySchedulePanel();
+        addPanel(ModifySchedule, "ModifySchedule");
         getContentPane().add(mainPanel);
         setVisible(true);
     }

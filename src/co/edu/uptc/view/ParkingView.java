@@ -1,9 +1,8 @@
 package co.edu.uptc.view;
 
 import co.edu.uptc.view.panels.*;
-
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
 public class ParkingView extends JFrame {
     private CardLayout cardLayout;
@@ -18,17 +17,17 @@ public class ParkingView extends JFrame {
 
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
+//RecepcionistMenuPanel recepcionistMenuPanel = new RecepcionistMenuPanel();
+       //addPanel(recepcionistMenuPanel,"Recepcionist");
+       //AdminMenuPanel adminMenuPanel = new AdminMenuPanel();
+        //addPanel(adminMenuPanel,"Admin");
+        //LoginPanel loginPanel = new LoginPanel();
+       //addPanel(loginPanel, "Login");
+        //CreateRecepcionistPanel createRecepcionistPanel = new CreateRecepcionistPanel();
+        //addPanel(createRecepcionistPanel,"CreateRecepcionist");
 
-//        RecepcionistMenuPanel recepcionistMenuPanel = new RecepcionistMenuPanel();
-//        addPanel(recepcionistMenuPanel,"Recepcionist");
-//        AdminMenuPanel adminMenuPanel = new AdminMenuPanel();
-//        addPanel(adminMenuPanel,"Admin");
-//        LoginPanel loginPanel = new LoginPanel();
-//        addPanel(loginPanel, "Login");
-//        CreateRecepcionistPanel createRecepcionistPanel = new CreateRecepcionistPanel();
-//        addPanel(createRecepcionistPanel,"CreateRecepcionist");
-//        ParkingSpacesPanel parkingSpacesPanel = new ParkingSpacesPanel(15, true);
-//        addPanel(parkingSpacesPanel,"parkingAvailabilityPanel");
+        //ParkingSpacesPanel parkingSpacesPanel = new ParkingSpacesPanel(15, true);
+        //addPanel(parkingSpacesPanel,"parkingAvailabilityPanel");
         VehicleExitPanel exitPanel = new VehicleExitPanel();
         addPanel(exitPanel,"vehicleExitPanel");
 

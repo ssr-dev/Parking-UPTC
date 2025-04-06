@@ -13,7 +13,7 @@ public class CreateRecepcionistPanel extends JPanel {
         setLayout(new BorderLayout());
         setBackground(Color.LIGHT_GRAY);
 
-        JLabel title = new JLabel("Ingresar datos del usuario", SwingConstants.CENTER);
+        JLabel title = new JLabel("Ingresar datos del recepcionista", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 22));
         title.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
         add(title, BorderLayout.NORTH);
@@ -50,7 +50,7 @@ public class CreateRecepcionistPanel extends JPanel {
         buttonPanel.setBackground(Color.LIGHT_GRAY);
 
         backButton = new JButton("Atrás");
-        createButton = new JButton("Crear usuario");
+        createButton = new JButton("Crear recepcionista");
 
         buttonPanel.add(backButton, BorderLayout.WEST);
         buttonPanel.add(createButton, BorderLayout.EAST);

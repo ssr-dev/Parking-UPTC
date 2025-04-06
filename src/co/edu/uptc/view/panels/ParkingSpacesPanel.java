@@ -54,7 +54,7 @@ public class ParkingSpacesPanel extends JPanel {
         } else {
             alertTitle.setText("Disponibilidad óptima");
             alertTitle.setForeground(new Color(0, 153, 0));
-            alertMessage.setText("");
+            alertMessage.setText("Hay espacios libres para estacionar sin problemas");
         }
 
         alertPanel.add(alertTitle);

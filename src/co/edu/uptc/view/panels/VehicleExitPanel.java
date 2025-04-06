@@ -29,9 +29,9 @@ public class VehicleExitPanel extends JPanel {
         generateChangeMoney = new JButton("Generar cambio");
         elapsedTime = new JTextField();
         goBackWindow = new JButton("Atrás");
-        goBackWindow.setPreferredSize(new Dimension(200, 35));
+        goBackWindow.setPreferredSize(new Dimension(300, 25));
         confirmExitButton = new JButton("Generar ticket");
-        confirmExitButton.setPreferredSize(new Dimension(200, 35));
+        confirmExitButton.setPreferredSize(new Dimension(300, 25));
         formPanel.add(title, gridBagConstraintsConfig(0, 0, 1, 3));
         formPanel.add(createLabel("Placa del vehículo:", 25), gridBagConstraintsConfig(0, 1, 1, 1));
         formPanel.add(licensePlateField, gridBagConstraintsConfig(0, 2, 1, 1));
@@ -56,10 +56,12 @@ public class VehicleExitPanel extends JPanel {
         formPanel.add(elapsedTime, gridBagConstraintsConfig(2, 6, 1, 1));
         formPanel.add(createLabel("Fecha:", 25), gridBagConstraintsConfig(1, 7, 1, 1));
         formPanel.add(createLabel(dateVehicleExit.getText(), 33), gridBagConstraintsConfig(2, 7, 1, 1));
-        formPanel.add(goBackWindow, gridBagConstraintsConfig(0, 8, 1, 1));
-        formPanel.add(createLabel("", 25), gridBagConstraintsConfig(1, 8, 1, 1));
-        formPanel.add(confirmExitButton, gridBagConstraintsConfig(2, 8, 1, 1));
         add(formPanel);
+        add(Box.createRigidArea(new Dimension(0, 450)));
+        JPanel panelButtons = new JPanel(new GridLayout(1, 2, 100, 0));
+        panelButtons.add(goBackWindow);
+        panelButtons.add(confirmExitButton);
+        add(panelButtons, BorderLayout.SOUTH);
 
     }
 

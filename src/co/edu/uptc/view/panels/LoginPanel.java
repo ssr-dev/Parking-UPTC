@@ -15,6 +15,8 @@ public class LoginPanel extends JPanel implements ActionListener{
     public LoginPanel() {
         setLayout(new GridBagLayout());
 
+        presenter = Presenter.getInstance();
+
         Font titleFont = new Font("Arial", Font.BOLD, 40);
         Font fieldFont = new Font("Arial", Font.PLAIN, 18);
 
@@ -77,10 +79,6 @@ public class LoginPanel extends JPanel implements ActionListener{
 
     public JButton getLoginButton() {
         return loginButton;
-    }
-
-    public void setPresenter(Presenter presenter) {
-        this.presenter = presenter;
     }
 
     public void clearFiles(){

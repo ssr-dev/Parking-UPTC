@@ -7,7 +7,7 @@ import co.edu.uptc.view.ParkingView;
 import co.edu.uptc.view.panels.CreateRecepcionistPanel;
 import co.edu.uptc.view.panels.LoginPanel;
 
-public class Presenter {
+public final class Presenter {
     private static Presenter presenter;
     private ModelSystem modelSystem;
     private ParkingView parkingView;

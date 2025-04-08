@@ -12,7 +12,7 @@ public class VehicleEntryPanel extends JPanel {
     private JLabel alertText;
     private JButton goBackWindow;
 
-    public VehicleEntryPanel() {
+    public VehicleEntryPanel(int parkingSpacess) {
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 50));
 
@@ -20,11 +20,18 @@ public class VehicleEntryPanel extends JPanel {
         title.setFont(new Font("Arial", Font.BOLD, 35));
         add(title, BorderLayout.NORTH);
 
-        parkingSpaces = new JLabel("00");
-        alertTitle = new JLabel("Disponibilidad óptima");
+        parkingSpaces = new JLabel(parkingSpacess+"");
+        if (parkingSpacess == 0){
+            alertTitle = new JLabel("ALERTA");
+            alertText = new JLabel("No hay espacios disponibles en el parqueadero");
+        }else if (parkingSpacess < 5 ){
+            alertTitle = new JLabel("ADVERTENCIA");
+            alertText = new JLabel("Quedan pocos espacios disponibles, estaciona pronto");
+        } else {
+            alertTitle = new JLabel("Disponibilidad óptima");
+            alertText = new JLabel("Hay espacios libres para estacionar sin problemas");
+        }
         alertTitle.setFont(new Font("Georgia", Font.BOLD, 25));
-        alertText = new JLabel(" Hay espacios libres para estacionar sin problemas");
-
         JTextArea areaAlertText = new JTextArea(alertText.getText());
         areaAlertText.setLineWrap(true);
         areaAlertText.setWrapStyleWord(true);
@@ -33,8 +40,8 @@ public class VehicleEntryPanel extends JPanel {
         areaAlertText.setOpaque(false);
         areaAlertText.setBorder(null);
         areaAlertText.setFont(new Font("Georgia", Font.ITALIC, 24));
-        areaAlertText.setMaximumSize(new Dimension(310, 80));
-        areaAlertText.setPreferredSize(new Dimension(310, 80)); 
+        areaAlertText.setMaximumSize(new Dimension(315, 90));
+        areaAlertText.setPreferredSize(new Dimension(315, 90)); 
         alertText.setPreferredSize(new Dimension(400, 50));
         licensePlateField = new JTextField();
         licensePlateField.setMaximumSize(new Dimension(320, 30)); 

@@ -1,3 +1,5 @@
+package co.edu.uptc.model;
+
 import java.util.ArrayList;
 import java.util.List;
 

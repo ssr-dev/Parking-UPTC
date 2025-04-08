@@ -1,3 +1,5 @@
+package co.edu.uptc.model;
+
 public class Schedule {
 
     private String day;

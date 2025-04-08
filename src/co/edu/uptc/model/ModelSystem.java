@@ -1,3 +1,5 @@
+package co.edu.uptc.model;
+
 import java.security.SecureRandom;
 import java.time.LocalDate;
 import java.util.ArrayList;

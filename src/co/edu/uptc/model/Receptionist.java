@@ -1,3 +1,5 @@
+package co.edu.uptc.model;
+
 public class Receptionist extends User{
     private String id;
     private String firstName;

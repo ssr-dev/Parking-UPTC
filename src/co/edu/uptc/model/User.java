@@ -1,3 +1,5 @@
+package co.edu.uptc.model;
+
 public class User {
     protected String username;
     protected String password;

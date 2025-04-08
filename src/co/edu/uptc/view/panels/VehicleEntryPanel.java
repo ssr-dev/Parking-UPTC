@@ -12,7 +12,11 @@ public class VehicleEntryPanel extends JPanel {
     private JLabel alertText;
     private JButton goBackWindow;
 
+<<<<<<< HEAD
     public VehicleEntryPanel(int parkingSpacess) {
+=======
+    public VehicleEntryPanel() {
+>>>>>>> origin/main
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 50));
 
@@ -20,6 +24,7 @@ public class VehicleEntryPanel extends JPanel {
         title.setFont(new Font("Arial", Font.BOLD, 35));
         add(title, BorderLayout.NORTH);
 
+<<<<<<< HEAD
         parkingSpaces = new JLabel(parkingSpacess+"");
         if (parkingSpacess == 0){
             alertTitle = new JLabel("ALERTA");
@@ -32,6 +37,13 @@ public class VehicleEntryPanel extends JPanel {
             alertText = new JLabel("Hay espacios libres para estacionar sin problemas");
         }
         alertTitle.setFont(new Font("Georgia", Font.BOLD, 25));
+=======
+        parkingSpaces = new JLabel("00");
+        alertTitle = new JLabel("Disponibilidad óptima");
+        alertTitle.setFont(new Font("Georgia", Font.BOLD, 25));
+        alertText = new JLabel(" Hay espacios libres para estacionar sin problemas");
+
+>>>>>>> origin/main
         JTextArea areaAlertText = new JTextArea(alertText.getText());
         areaAlertText.setLineWrap(true);
         areaAlertText.setWrapStyleWord(true);
@@ -40,8 +52,13 @@ public class VehicleEntryPanel extends JPanel {
         areaAlertText.setOpaque(false);
         areaAlertText.setBorder(null);
         areaAlertText.setFont(new Font("Georgia", Font.ITALIC, 24));
+<<<<<<< HEAD
         areaAlertText.setMaximumSize(new Dimension(315, 90));
         areaAlertText.setPreferredSize(new Dimension(315, 90)); 
+=======
+        areaAlertText.setMaximumSize(new Dimension(310, 80));
+        areaAlertText.setPreferredSize(new Dimension(310, 80)); 
+>>>>>>> origin/main
         alertText.setPreferredSize(new Dimension(400, 50));
         licensePlateField = new JTextField();
         licensePlateField.setMaximumSize(new Dimension(320, 30)); 

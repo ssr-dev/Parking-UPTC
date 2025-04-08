@@ -1,5 +1,6 @@
 package co.edu.uptc.run;
 
+<<<<<<< HEAD
 import co.edu.uptc.view.*;
 import co.edu.uptc.view.panels.LoginPanel;
 
@@ -8,6 +9,10 @@ public class Runner {
         ParkingView parkingView = new ParkingView();
 //        parkingView.userlogInFrame();
 //        parkingView.createFrame();
+=======
+public class Runner {
+    public static void main(String[] args) {
+>>>>>>> origin/main
         
     }
 

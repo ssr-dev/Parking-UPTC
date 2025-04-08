@@ -1,19 +1,37 @@
-public class Receptionist extends User {
-    public String id;
-    public String firstName;
-    public String lastName;
-    public String phoneNumber;
-    public String address;
-    public Parking assignedParking;
-    
+package co.edu.uptc.model;
 
-    public Receptionist(String id, String firstName, String lastName, String phoneNumber, String address, Parking assignedParking){
+public class Receptionist extends User{
+    private String id;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String address;
+    private Parking assignedParking;
+
+    public Receptionist(ModelSystem objSystem){
+        super(objSystem);
+    }
+
+    public Receptionist(ModelSystem objSystem, String id, String firstName, String lastName, String phoneNumber, String address, Parking assignedParking){
+        super(objSystem);
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.assignedParking = assignedParking;
+    }
+
+    public void entryVehicle(String plate){
+        Ticket ticket = new Ticket(plate, this);
+        Vehicle vehicle = new Vehicle(plate, ticket);
+        objSystem.getTickets().add(ticket);
+        assignedParking.getVehicles().add(vehicle);
+    }
+
+    public void exitVehicle(String plate){
+        assignedParking.searchVehicle(plate).getAssignedTicket().calculatePrice(assignedParking.getPriceByHour());
+        assignedParking.removeVehicle(plate);
     }
 
     public String getId() {
@@ -55,14 +73,18 @@ public class Receptionist extends User {
     public void setAddress(String address) {
         this.address = address;
     }
-    
-    public void entryVehicle(String plate){
-        //metodo de agregar vehiculo
 
+    public Parking getAssignedParking() {
+        return assignedParking;
     }
 
-    public void exitVehicle(String plate){
-        //remove vehicule, calcular el precio
+    public void setAssignedParking(Parking assignedParking) {
+        this.assignedParking = assignedParking;
+    }
+
+    @Override
+    public String toString(){
+        return super.toString() + ", " + this.id + ", " + this.firstName + ", " + this.lastName + ", " + this.phoneNumber + ", " + this.address + ", " + this.assignedParking.toString();
     }
 
 }

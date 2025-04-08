@@ -1,43 +1,51 @@
 package co.edu.uptc.view;
 
-import javax.swing.*;
+import co.edu.uptc.view.panels.*;
 import java.awt.*;
+import javax.swing.*;
 
 public class ParkingView extends JFrame {
-        JFrame frame = new JFrame();
+    private CardLayout cardLayout;
+    private JPanel mainPanel;
 
-    public ParkingView(){
-        createFrame();
+    public ParkingView() {
+        setTitle("Sistema de parking UPTC");
+        setSize(800, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setResizable(false);
+
+        cardLayout = new CardLayout();
+        mainPanel = new JPanel(cardLayout);
+  
+//        RecepcionistMenuPanel recepcionistMenuPanel = new RecepcionistMenuPanel();
+//        addPanel(recepcionistMenuPanel,"Recepcionist");
+     //  AdminMenuPanel adminMenuPanel = new AdminMenuPanel();
+       // addPanel(adminMenuPanel,"Admin");
+//      LoginPanel loginPanel = new LoginPanel();
+//      addPanel(loginPanel, "Login");
+//       CreateRecepcionistPanel createRecepcionistPanel = new CreateRecepcionistPanel();
+//        addPanel(createRecepcionistPanel,"CreateRecepcionist");
+//        ParkingSpacesPanel parkingSpacesPanel = new ParkingSpacesPanel(15, true);
+//        addPanel(parkingSpacesPanel,"parkingAvailabilityPanel");
+//       VehicleExitPanel exitPanel = new VehicleExitPanel();
+//        addPanel(exitPanel,"vehicleExitPanel");
+//        RegisterParkingPanel RegisterParkingPanel=new RegisterParkingPanel();
+//        addPanel(RegisterParkingPanel, "RegisterParking");
+       ModifySchedulePanel ModifySchedule=new ModifySchedulePanel();
+        addPanel(ModifySchedule, "ModifySchedule");
+//        VehicleEntryPanel vehicleEntry = new VehicleEntryPanel();
+//        addPanel(vehicleEntry, "VehicleEntry");
+        getContentPane().add(mainPanel);
+        setVisible(true);
     }
 
-    public void createFrame() {
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
-        frame.setTitle("Parking View");
-        JOptionPane.showMessageDialog(frame, "Parking View", "Parking View", JOptionPane.OK_OPTION);
-        userlogInFrame();
+    public void showPanel(String panelName) {
+        cardLayout.show(mainPanel, panelName);
     }
 
-    public void modifyFrame(String title, JPanel panel) {
-        frame.setVisible(false);
-        frame.setTitle(title);
-        frame.add(panel);
-        frame.setVisible(true);
+    public void addPanel(JPanel panel, String panelName) {
+        mainPanel.add(panel, panelName);
     }
-
-    public void userlogInFrame(){
-        JPanel loginPanel = new JPanel();
-        JButton loginButton = new JButton("Login");
-        loginPanel.add(loginButton);
-        modifyFrame("Login", loginPanel);
-
-    }
-
-    public void userlogOutFrame(){
-        JPanel logOutPanel = new JPanel();
-        JButton logoutButton = new JButton("Logout");
-        logOutPanel.add(logoutButton);
-        modifyFrame("Logout", logOutPanel);
-    }
-
 }
+

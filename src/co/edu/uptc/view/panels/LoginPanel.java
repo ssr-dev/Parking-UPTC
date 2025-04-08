@@ -1,12 +1,16 @@
 package co.edu.uptc.view.panels;
 
-import javax.swing.*;
+import co.edu.uptc.presenter.Presenter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
-public class LoginPanel extends JPanel {
+public class LoginPanel extends JPanel implements ActionListener{
     private JTextField txtUsername;
     private JPasswordField txtPassword;
     private JButton loginButton;
+    private Presenter presenter;
 
     public LoginPanel() {
         setLayout(new GridBagLayout());
@@ -28,6 +32,7 @@ public class LoginPanel extends JPanel {
         loginButton = new JButton("Iniciar sesión");
         loginButton.setPreferredSize(new Dimension(125, 35));
 
+        loginButton.addActionListener(this);
         addComponentsToPanel(titleLabel, fieldFont);
     }
 
@@ -62,16 +67,35 @@ public class LoginPanel extends JPanel {
         add(loginButton, config);
     }
 
-    public JTextField getTxtUsername() {
-        return txtUsername;
+    public String getTxtUsername() {
+        return txtUsername.getText();
     }
 
-    public JPasswordField getTxtPassword() {
-        return txtPassword;
+    public String getTxtPassword() {
+        return txtPassword.getText();
     }
 
     public JButton getLoginButton() {
         return loginButton;
+    }
+
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
+    }
+
+    public void clearFiles(){
+        txtUsername.setText("");
+        txtPassword.setText("");
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == loginButton){
+            System.out.println("si se está haciendo");
+            presenter.login();
+            System.out.println("si se está haciendo x2");
+
+        }
     }
 }
 

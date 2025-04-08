@@ -1,10 +1,13 @@
 package co.edu.uptc.view.panels;
 
-import javax.swing.*;
+import co.edu.uptc.presenter.Presenter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
-public class CreateRecepcionistPanel extends JPanel {
-
+public class CreateRecepcionistPanel extends JPanel implements ActionListener{
+    private Presenter presenter;
     private JTextField docField, nameField, lastNameField, phoneField, addressField, emailField;
     private JComboBox<String> parkingComboBox;
     private JButton backButton, createButton;
@@ -39,7 +42,7 @@ public class CreateRecepcionistPanel extends JPanel {
         gbc.gridwidth = 1;
         formPanel.add(new JLabel("Parqueadero:"), gbc);
 
-        parkingComboBox = new JComboBox<>(new String[] { "Parqueadero 1", "Parqueadero 2" });
+        parkingComboBox = new JComboBox<>(new String[] {});
         gbc.gridx = 1;
         formPanel.add(parkingComboBox, gbc);
 
@@ -55,7 +58,14 @@ public class CreateRecepcionistPanel extends JPanel {
         buttonPanel.add(backButton, BorderLayout.WEST);
         buttonPanel.add(createButton, BorderLayout.EAST);
 
+        backButton.addActionListener(this);
+        createButton.addActionListener(this);
         add(buttonPanel, BorderLayout.SOUTH);
+    }
+
+    public void setComboBox(String[] parking){
+        parkingComboBox = new JComboBox<>(parking);
+
     }
 
     private JTextField addField(String label, JPanel panel, GridBagConstraints gbc, int y) {
@@ -68,6 +78,51 @@ public class CreateRecepcionistPanel extends JPanel {
         gbc.gridx = 1;
         panel.add(textField, gbc);
         return textField;
+    }
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
+    }
+
+    public void clearFiles(){
+        docField.setText("");
+        nameField.setText("");
+        lastNameField.setText("");
+        phoneField.setText("");
+        addressField.setText("");
+        emailField.setText("");
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == backButton){
+            presenter.backWindow();
+        }if (e.getSource() == createButton){
+            presenter.createRecepcionist();
+        }
+    }
+
+    public String getDocField() {
+        return docField.getText();
+    }
+
+    public String getNameField() {
+        return nameField.getText();
+    }
+
+    public String getLastNameField() {
+        return lastNameField.getText();
+    }
+
+    public String getPhoneField() {
+        return phoneField.getText();
+    }
+
+    public String getAddressField() {
+        return addressField.getText();
+    }
+
+    public String getEmailField() {
+        return emailField.getText();
     }
 
 }

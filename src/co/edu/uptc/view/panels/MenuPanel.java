@@ -1,10 +1,11 @@
 package co.edu.uptc.view.panels;
 
-import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.Objects;
+import javax.swing.*;
 
-public abstract class MenuPanel extends JPanel {
+public abstract class MenuPanel extends JPanel implements ActionListener{
 
     public MenuPanel(String title, String imagePath) {
         setLayout(new BorderLayout());

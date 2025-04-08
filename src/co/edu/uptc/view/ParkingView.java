@@ -7,6 +7,11 @@ import javax.swing.*;
 public class ParkingView extends JFrame {
     private CardLayout cardLayout;
     private JPanel mainPanel;
+    private LoginPanel loginPanel;
+    private RecepcionistMenuPanel recepcionistMenuPanel;
+    private AdminMenuPanel adminMenuPanel;
+    private CreateRecepcionistPanel createRecepcionistPanel;
+
 
     public ParkingView() {
         setTitle("Sistema de parking UPTC");
@@ -18,22 +23,22 @@ public class ParkingView extends JFrame {
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
   
-//        RecepcionistMenuPanel recepcionistMenuPanel = new RecepcionistMenuPanel();
-//        addPanel(recepcionistMenuPanel,"Recepcionist");
-     //  AdminMenuPanel adminMenuPanel = new AdminMenuPanel();
-       // addPanel(adminMenuPanel,"Admin");
-//      LoginPanel loginPanel = new LoginPanel();
-//      addPanel(loginPanel, "Login");
-//       CreateRecepcionistPanel createRecepcionistPanel = new CreateRecepcionistPanel();
-//        addPanel(createRecepcionistPanel,"CreateRecepcionist");
-//        ParkingSpacesPanel parkingSpacesPanel = new ParkingSpacesPanel(15, true);
-//        addPanel(parkingSpacesPanel,"parkingAvailabilityPanel");
+        recepcionistMenuPanel = new RecepcionistMenuPanel();
+        addPanel(recepcionistMenuPanel,"Recepcionist");
+ loginPanel = new LoginPanel();
+addPanel(loginPanel, "LogIn");
+ adminMenuPanel = new AdminMenuPanel();
+ addPanel(adminMenuPanel,"Admin");
+       createRecepcionistPanel = new CreateRecepcionistPanel();
+        addPanel(createRecepcionistPanel,"CreateRecepcionist");
+        //ParkingSpacesPanel parkingSpacesPanel = new ParkingSpacesPanel(15, true);
+        //addPanel(parkingSpacesPanel,"parkingAvailabilityPanel");
 //       VehicleExitPanel exitPanel = new VehicleExitPanel();
 //        addPanel(exitPanel,"vehicleExitPanel");
 //        RegisterParkingPanel RegisterParkingPanel=new RegisterParkingPanel();
 //        addPanel(RegisterParkingPanel, "RegisterParking");
-       ModifySchedulePanel ModifySchedule=new ModifySchedulePanel();
-        addPanel(ModifySchedule, "ModifySchedule");
+       //ModifySchedulePanel ModifySchedule=new ModifySchedulePanel();
+        //addPanel(ModifySchedule, "ModifySchedule");
 //        VehicleEntryPanel vehicleEntry = new VehicleEntryPanel();
 //        addPanel(vehicleEntry, "VehicleEntry");
         getContentPane().add(mainPanel);
@@ -46,6 +51,22 @@ public class ParkingView extends JFrame {
 
     public void addPanel(JPanel panel, String panelName) {
         mainPanel.add(panel, panelName);
+    }
+
+    public LoginPanel getLoginPanel(){
+        return loginPanel;
+    } 
+
+    public RecepcionistMenuPanel getRecepcionistMenuPanel() {
+        return recepcionistMenuPanel;
+    }
+
+    public AdminMenuPanel getAdminMenuPanel() {
+        return adminMenuPanel;
+    }
+
+    public CreateRecepcionistPanel getCreateRecepcionistPanel() {
+        return createRecepcionistPanel;
     }
 }
 

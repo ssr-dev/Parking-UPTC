@@ -23,7 +23,21 @@ public class ModelSystem {
     }
 
     public boolean validateLogIn(String username, String password){
-        return searchUser(username, SEARCH_BY_USERNAME).getPassword().equals(password); 
+            User user = searchUser(username, SEARCH_BY_USERNAME);
+            if (user != null) {
+                return user.getPassword().equals(password);
+            }
+            return false;
+    }
+
+    public boolean validateLogInAdmin(String usernameU, String passwordU){
+        boolean validateAdmin = false;
+        String username = "Faustino_Ramirez";
+        String password = "HJ2EW3";
+        if (username.equals(usernameU) || password.equals(passwordU)){
+            validateAdmin = true;
+        }
+        return validateAdmin;
     }
 
     public User searchUser(String key, int searchMethod){

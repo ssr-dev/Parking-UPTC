@@ -101,12 +101,8 @@ public class VehicleEntryPanel extends JPanel {
         parkingSpaces.setText(availableParkingSpaces);
     }
 
-    public void setAlertTitle(String textTitle){
-        alertTitle.setText(textTitle);
-    }
-
-    public void setAlertText(String textAlert){
-        alertText.setText(textAlert);
+    public void setAlertText(JLabel alertText){
+        alertText.setText(alertText.getText());
     }
 
     public String getLicensePlate() {

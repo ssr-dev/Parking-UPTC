@@ -53,7 +53,7 @@ public abstract class MenuPanel extends JPanel implements ActionListener{
         bottomPanel.add(logoutButton);
         add(bottomPanel, BorderLayout.SOUTH);
 
-        setupButtons(); // agrega los botones específicos del panel hijo
+        setupButtons();
     }
 
     protected JPanel buttonPanel;
@@ -71,7 +71,7 @@ public abstract class MenuPanel extends JPanel implements ActionListener{
                 BorderFactory.createLineBorder(Color.GRAY),
                 BorderFactory.createEmptyBorder(10, 15, 10, 15)
         ));
-        buttonPanel.add(Box.createVerticalStrut(15)); // Espaciado entre botones
+        buttonPanel.add(Box.createVerticalStrut(15));
         buttonPanel.add(button);
     }
 

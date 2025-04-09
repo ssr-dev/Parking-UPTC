@@ -21,7 +21,8 @@ public class ParkingView extends JFrame {
     private RegisterParkingPanel registerParkingPanel;
     private VehicleEntryPanel vehicleEntryPanel;
     private VehicleExitPanel vehicleExitPanel;
-
+    private ChangeCredentialsPanel changeCredentials;
+    private GenerateReportPanel generateReport;
 
     public ParkingView() {
         setTitle("Sistema de parking UPTC");
@@ -67,6 +68,8 @@ public class ParkingView extends JFrame {
         mainPanel.add(vehicleEntryPanel, "vehicleEntryPanel");
         mainPanel.add(vehicleExitPanel, "vehicleExitPanel");
         mainPanel.add(registerParkingPanel, "registerParkingPanel");
+        mainPanel.add(changeCredentials, "credentialsPanel");
+        mainPanel.add(generateReport, "generateReport");
     }
 
     public void setPresenters(Presenter presenter) {

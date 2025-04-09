@@ -7,19 +7,20 @@ public class Receptionist extends User{
     private String phoneNumber;
     private String address;
     private Parking assignedParking;
+    private String parking;
 
     public Receptionist(ModelSystem objSystem){
         super(objSystem);
     }
 
-    public Receptionist(ModelSystem objSystem, String id, String firstName, String lastName, String phoneNumber, String address, Parking assignedParking){
+    public Receptionist(ModelSystem objSystem, String id, String firstName, String lastName, String phoneNumber, String address, String parking){
         super(objSystem);
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        this.assignedParking = assignedParking;
+        this.parking = parking;
     }
 
     public void entryVehicle(String plate){
@@ -87,4 +88,7 @@ public class Receptionist extends User{
         return super.toString() + ", " + this.id + ", " + this.firstName + ", " + this.lastName + ", " + this.phoneNumber + ", " + this.address + ", " + this.assignedParking.toString();
     }
 
+    public String getParking() {
+        return parking;
+    }
 }

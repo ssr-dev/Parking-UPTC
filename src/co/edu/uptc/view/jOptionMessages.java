@@ -10,6 +10,10 @@ public class jOptionMessages {
         this.parent = parent;
     }
 
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(null, message);
+    }
+
     public void successMessage() {
         JOptionPane.showMessageDialog(parent, "Acción completada con éxito", "Success", JOptionPane.INFORMATION_MESSAGE);
     }

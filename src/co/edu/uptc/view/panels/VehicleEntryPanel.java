@@ -87,7 +87,9 @@ public class VehicleEntryPanel extends JPanel {
         add(formPanel, BorderLayout.CENTER);
         JPanel panelButtons = new JPanel(new GridLayout(1, 2, 300, 0));
         goBackWindow = new JButton("Atrás");
+        goBackWindow.addActionListener(e -> presenter.logOutToReceptionistMenu());
         generateTicketButton = new JButton("Generar Ticket");
+        generateTicketButton.addActionListener(e -> presenter.vehiceEntry());
         panelButtons.add(goBackWindow);
         panelButtons.add(generateTicketButton);
         add(panelButtons, BorderLayout.SOUTH);

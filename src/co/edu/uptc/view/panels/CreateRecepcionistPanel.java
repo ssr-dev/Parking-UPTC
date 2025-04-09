@@ -2,15 +2,15 @@ package co.edu.uptc.view.panels;
 
 import co.edu.uptc.presenter.Presenter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import javax.swing.*;
 
-public class CreateRecepcionistPanel extends JPanel implements ActionListener{
+public class CreateRecepcionistPanel extends JPanel implements ActionListener {
     private Presenter presenter;
     private JTextField docField, nameField, lastNameField, phoneField, addressField, emailField;
     private JComboBox<String> parkingComboBox;
     private JButton backButton, createButton;
+    private String selectedParkingName;
 
     public CreateRecepcionistPanel() {
         setLayout(new BorderLayout());
@@ -43,6 +43,12 @@ public class CreateRecepcionistPanel extends JPanel implements ActionListener{
         formPanel.add(new JLabel("Parqueadero:"), gbc);
 
         parkingComboBox = new JComboBox<>(new String[] {});
+        parkingComboBox.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                selectedParkingName = (String) e.getItem();
+            }
+        });
+
         gbc.gridx = 1;
         formPanel.add(parkingComboBox, gbc);
 
@@ -63,9 +69,11 @@ public class CreateRecepcionistPanel extends JPanel implements ActionListener{
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
-    public void setComboBox(String[] parking){
+    public void setComboBox(String[] parking) {
         parkingComboBox.setModel(new DefaultComboBoxModel<>(parking));
-
+        if (parking.length > 0) {
+            selectedParkingName = parking[0];
+        }
     }
 
     private JTextField addField(String label, JPanel panel, GridBagConstraints gbc, int y) {
@@ -79,11 +87,12 @@ public class CreateRecepcionistPanel extends JPanel implements ActionListener{
         panel.add(textField, gbc);
         return textField;
     }
+
     public void setPresenter(Presenter presenter) {
         this.presenter = presenter;
     }
 
-    public void cleanFiles(){
+    public void cleanFiles() {
         docField.setText("");
         nameField.setText("");
         lastNameField.setText("");
@@ -94,8 +103,11 @@ public class CreateRecepcionistPanel extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == backButton){
-        }if (e.getSource() == createButton){
+        if (e.getSource() == backButton) {
+            presenter.logOutToAdminMenu();
+        }
+        if (e.getSource() == createButton) {
+            presenter.createRecepcionist();
         }
     }
 
@@ -123,4 +135,7 @@ public class CreateRecepcionistPanel extends JPanel implements ActionListener{
         return emailField.getText();
     }
 
+    public String getSelectedParkingName() {
+        return selectedParkingName;
+    }
 }

@@ -48,6 +48,7 @@ public abstract class MenuPanel extends JPanel implements ActionListener {
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         bottomPanel.setBackground(Color.LIGHT_GRAY);
         JButton logoutButton = new JButton("Cerrar sesión");
+        logoutButton.addActionListener(e -> presenter.openLogin());
         logoutButton.setPreferredSize(new Dimension(150, 35));
         logoutButton.setFocusPainted(false);
         logoutButton.setFont(new Font("Arial", Font.PLAIN, 14));

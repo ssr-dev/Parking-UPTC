@@ -2,7 +2,7 @@ package co.edu.uptc.view.panels;
 
 import java.awt.event.ActionEvent;
 
-public class AdminMenuPanel extends MenuPanel {
+public class AdminMenuPanel extends MenuPanel  {
     public AdminMenuPanel() {
         super("Menú Administrador", "images/AdminImage.jpeg");
     }

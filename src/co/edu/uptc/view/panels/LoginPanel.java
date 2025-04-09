@@ -1,21 +1,20 @@
 package co.edu.uptc.view.panels;
 
 import co.edu.uptc.presenter.Presenter;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class LoginPanel extends JPanel implements ActionListener{
+public class LoginPanel extends JPanel implements ActionListener {
     private JTextField txtUsername;
     private JPasswordField txtPassword;
     private JButton loginButton;
     private Presenter presenter;
 
-    public LoginPanel() {
+    public LoginPanel(Presenter presenter) {
         setLayout(new GridBagLayout());
-
-        presenter = Presenter.getInstance();
 
         Font titleFont = new Font("Arial", Font.BOLD, 40);
         Font fieldFont = new Font("Arial", Font.PLAIN, 18);
@@ -69,6 +68,10 @@ public class LoginPanel extends JPanel implements ActionListener{
         add(loginButton, config);
     }
 
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
+    }
+
     public String getTxtUsername() {
         return txtUsername.getText();
     }
@@ -81,14 +84,14 @@ public class LoginPanel extends JPanel implements ActionListener{
         return loginButton;
     }
 
-    public void clearFiles(){
+    public void clearFiles() {
         txtUsername.setText("");
         txtPassword.setText("");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == loginButton){
+        if (e.getSource() == loginButton) {
             System.out.println("si se está haciendo");
             presenter.login();
             System.out.println("si se está haciendo x2");

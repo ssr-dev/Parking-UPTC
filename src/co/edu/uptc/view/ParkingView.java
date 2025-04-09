@@ -69,4 +69,3 @@ addPanel(loginPanel, "LogIn");
         return createRecepcionistPanel;
     }
 }
-

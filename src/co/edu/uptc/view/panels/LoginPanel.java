@@ -13,6 +13,7 @@ public class LoginPanel extends JPanel implements ActionListener{
     private Presenter presenter;
 
     public LoginPanel() {
+        presenter = Presenter.getInstance();
         setLayout(new GridBagLayout());
 
         Font titleFont = new Font("Arial", Font.BOLD, 40);
@@ -82,7 +83,7 @@ public class LoginPanel extends JPanel implements ActionListener{
     public void setPresenter(Presenter presenter) {
         this.presenter = presenter;
     }
-
+    
     public void clearFiles(){
         txtUsername.setText("");
         txtPassword.setText("");

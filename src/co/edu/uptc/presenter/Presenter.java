@@ -53,13 +53,13 @@ public class Presenter {
     }
 
     public void backWindow(){
-        createRecepcionistPanel.clearFiles();
+        createRecepcionistPanel.cleanFiles();
         parkingView.showPanel("Admin");
     }
 
     public void createRecepcionist(){
-        adminModel.createNewReceptionist(createRecepcionistPanel.getDocField(), createRecepcionistPanel.getNameField(), createRecepcionistPanel.getLastNameField(), 
-        createRecepcionistPanel.getPhoneField(), createRecepcionistPanel.getAddressField(), assignedParking);
+        /*adminModel.createNewReceptionist(createRecepcionistPanel.getDocField(), createRecepcionistPanel.getNameField(), createRecepcionistPanel.getLastNameField(), 
+        createRecepcionistPanel.getPhoneField(), createRecepcionistPanel.getAddressField(), assignedParking); */
     }
 
 

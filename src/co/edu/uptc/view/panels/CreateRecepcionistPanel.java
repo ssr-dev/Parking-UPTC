@@ -64,7 +64,7 @@ public class CreateRecepcionistPanel extends JPanel implements ActionListener{
     }
 
     public void setComboBox(String[] parking){
-        parkingComboBox = new JComboBox<>(parking);
+        parkingComboBox.setModel(new DefaultComboBoxModel<>(parking));
 
     }
 
@@ -83,7 +83,7 @@ public class CreateRecepcionistPanel extends JPanel implements ActionListener{
         this.presenter = presenter;
     }
 
-    public void clearFiles(){
+    public void cleanFiles(){
         docField.setText("");
         nameField.setText("");
         lastNameField.setText("");

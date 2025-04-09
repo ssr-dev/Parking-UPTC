@@ -39,11 +39,23 @@ public class ParkingView extends JFrame {
 
     private void createPanels(){
         loginPanel = new LoginPanel();
-//        recepcionistMenuPanel = new RecepcionistMenuPanel();
-//        adminMenuPanel = new AdminMenuPanel();
-//        createRecepcionistPanel = new CreateRecepcionistPanel();
-//        vehicleEntryPanel = new VehicleEntryPanel();
-//        vehicleExitPanel = new VehicleExitPanel();
+        loginPanel.setPresenter(presenter);
+        recepcionistMenuPanel = new RecepcionistMenuPanel();
+        recepcionistMenuPanel.setPresenter(presenter);
+        adminMenuPanel = new AdminMenuPanel();
+        adminMenuPanel.setPresenter(presenter);
+        createRecepcionistPanel = new CreateRecepcionistPanel();
+        createRecepcionistPanel.setPresenter(presenter);
+        vehicleEntryPanel = new VehicleEntryPanel();
+        vehicleEntryPanel.setPresenter(presenter);
+        vehicleExitPanel = new VehicleExitPanel();
+        vehicleExitPanel.setPresenter(presenter);
+        parkingSpacesPanel = new ParkingSpacesPanel(0,false);
+        parkingSpacesPanel.setPresenter(presenter);
+        modifySchedulePanel = new ModifySchedulePanel();
+        modifySchedulePanel.setPresenter(presenter);
+        registerParkingPanel = new RegisterParkingPanel();
+        registerParkingPanel.setPresenter(presenter);
     }
 
     public void showPanel(String panelName) {
@@ -52,12 +64,17 @@ public class ParkingView extends JFrame {
 
     private void addPanels() {
         mainPanel.add(loginPanel, "loginPanel");
-//        mainPanel.add(recepcionistMenuPanel, "recepcionistMenuPanel");
-//        mainPanel.add(createRecepcionistPanel, "createRecepcionistPanel");
-//        mainPanel.add(adminMenuPanel, "adminMenuPanel");
+        mainPanel.add(recepcionistMenuPanel, "recepcionistMenuPanel");
+        mainPanel.add(adminMenuPanel, "adminMenuPanel");
+        mainPanel.add(createRecepcionistPanel, "createRecepcionistPanel");
+        mainPanel.add(parkingSpacesPanel, "parkingSpacesPanel");
+        mainPanel.add(modifySchedulePanel, "modifySchedulePanel");
+        mainPanel.add(vehicleEntryPanel, "vehicleEntryPanel");
+        mainPanel.add(vehicleExitPanel, "vehicleExitPanel");
+        mainPanel.add(registerParkingPanel, "registerParkingPanel");
     }
 
-    private void setPresenter(Presenter presenter) {
+    public void setPresenter(Presenter presenter) {
         this.presenter = presenter;
     }
 

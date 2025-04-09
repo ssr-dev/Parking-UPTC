@@ -1,5 +1,7 @@
 package co.edu.uptc.view.panels;
 
+import co.edu.uptc.presenter.Presenter;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,6 +9,7 @@ public class ParkingSpacesPanel extends JPanel {
     private JLabel availableSpacesLabel;
     private JLabel alertTitle;
     private JLabel alertMessage;
+    private Presenter presenter;
 
     public ParkingSpacesPanel(int availableSpaces, boolean isAvailable) {
         setLayout(new BorderLayout());
@@ -61,5 +64,9 @@ public class ParkingSpacesPanel extends JPanel {
         alertPanel.add(alertMessage);
 
         add(alertPanel, BorderLayout.SOUTH);
+    }
+
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
     }
 }

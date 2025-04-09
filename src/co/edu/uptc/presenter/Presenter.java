@@ -1,13 +1,14 @@
 package co.edu.uptc.presenter;
 
-import co.edu.uptc.model.Parking;
+import co.edu.uptc.view.ParkingView;
 
 public final class Presenter {
     private static Presenter presenter;
-    private Parking parkingView;
+    private ParkingView parkingView;
 
     public Presenter(){
-        parkingView = new Parking();
+        parkingView = new ParkingView();
+        parkingView.setPresenter(this);
     }
 
     public static Presenter getInstance() {
@@ -20,7 +21,6 @@ public final class Presenter {
 
     
     public void init(){
-        showParkingView();        
     }
 
 

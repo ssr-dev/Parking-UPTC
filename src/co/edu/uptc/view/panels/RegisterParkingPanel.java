@@ -1,5 +1,7 @@
 package co.edu.uptc.view.panels;
 
+import co.edu.uptc.presenter.Presenter;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,27 +9,26 @@ public class RegisterParkingPanel extends JPanel {
 
     private JTextField nameField, addressField;
     private JSpinner spacesSpinner;
-
     private JTextField weekdayOpenField, weekdayCloseField;
     private JTextField weekendOpenField, weekendCloseField;
-
     private JButton backButton, addButton;
+    private Presenter presenter;
 
     public RegisterParkingPanel() {
         setLayout(new BorderLayout());
         setBackground(Color.LIGHT_GRAY);
 
-        
+
         JLabel title = new JLabel("Ingresar datos del parqueadero", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 30));
         title.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
         add(title, BorderLayout.NORTH);
 
-        
+
         JPanel formPanel = new JPanel(new GridBagLayout());
         formPanel.setBackground(Color.LIGHT_GRAY);
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 8,10);
+        gbc.insets = new Insets(10, 10, 8, 10);
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
@@ -36,7 +37,7 @@ public class RegisterParkingPanel extends JPanel {
         nameField = addTextField("Nombre:", formPanel, gbc, y++);
         addressField = addTextField("Dirección:", formPanel, gbc, y++);
 
-    
+
         gbc.gridx = 0;
         gbc.gridy = y;
         formPanel.add(new JLabel("Espacios disponibles:"), gbc);
@@ -53,13 +54,13 @@ public class RegisterParkingPanel extends JPanel {
         separator.setPreferredSize(new Dimension(400, 1));
         formPanel.add(separator, gbc);
 
-        
+
         gbc.gridy = y++;
         JLabel horarioLabel = new JLabel("Horario de atención", SwingConstants.CENTER);
         horarioLabel.setFont(new Font("Arial", Font.BOLD, 16));
         formPanel.add(horarioLabel, gbc);
 
-        
+
         JPanel schedulePanel = new JPanel(new GridLayout(3, 2, 10, 10));
         schedulePanel.setBackground(Color.LIGHT_GRAY);
         weekdayOpenField = new JTextField();
@@ -101,6 +102,7 @@ public class RegisterParkingPanel extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
+
     private JTextField addTextField(String label, JPanel panel, GridBagConstraints gbc, int y) {
         gbc.gridx = 0;
         gbc.gridy = y;
@@ -113,5 +115,8 @@ public class RegisterParkingPanel extends JPanel {
         return textField;
     }
 
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
+    }
 
 }

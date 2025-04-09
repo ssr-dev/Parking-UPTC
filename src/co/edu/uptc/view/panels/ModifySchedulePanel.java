@@ -1,5 +1,7 @@
 package co.edu.uptc.view.panels;
 
+import co.edu.uptc.presenter.Presenter;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -10,6 +12,7 @@ public class ModifySchedulePanel extends JPanel {
     private JTextField openTimeField, closeTimeField;
     private JButton modifyButton, saveButton, backButton;
     private JTable scheduleTable;
+    private Presenter presenter;
 
     public ModifySchedulePanel() {
         setLayout(new BorderLayout());
@@ -98,5 +101,9 @@ public class ModifySchedulePanel extends JPanel {
         buttonPanel.add(saveButton, BorderLayout.EAST);
 
         add(buttonPanel, BorderLayout.SOUTH);
+    }
+
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
     }
 }

@@ -1,11 +1,15 @@
 package co.edu.uptc.view.panels;
 
+import co.edu.uptc.presenter.Presenter;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 import javax.swing.*;
 
-public abstract class MenuPanel extends JPanel implements ActionListener{
+public abstract class MenuPanel extends JPanel implements ActionListener {
+    protected Presenter presenter;
+    protected JPanel buttonPanel;
 
     public MenuPanel(String title, String imagePath) {
         setLayout(new BorderLayout());
@@ -56,7 +60,9 @@ public abstract class MenuPanel extends JPanel implements ActionListener{
         setupButtons();
     }
 
-    protected JPanel buttonPanel;
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
+    }
 
     protected abstract void setupButtons();
 
@@ -73,6 +79,7 @@ public abstract class MenuPanel extends JPanel implements ActionListener{
         ));
         buttonPanel.add(Box.createVerticalStrut(15));
         buttonPanel.add(button);
+        button.addActionListener(this); // se conecta al actionPerformed
     }
 
     private JLabel createImageLabel(String path) {
@@ -90,7 +97,8 @@ public abstract class MenuPanel extends JPanel implements ActionListener{
     }
 
     protected void logout() {
-        JOptionPane.showMessageDialog(this, "Sesión cerrada.");
+        if (presenter != null) {
+        }
     }
 }
 

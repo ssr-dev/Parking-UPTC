@@ -1,5 +1,7 @@
 package co.edu.uptc.view.panels;
 
+import co.edu.uptc.presenter.Presenter;
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -11,6 +13,7 @@ public class VehicleEntryPanel extends JPanel {
     private JLabel alertTitle;
     private JLabel alertText;
     private JButton goBackWindow;
+    private Presenter presenter;
 
     public VehicleEntryPanel() {
         setLayout(new BorderLayout());
@@ -96,6 +99,10 @@ public class VehicleEntryPanel extends JPanel {
 
     public void setAlertText(JLabel alertText){
         alertText.setText(alertText.getText());
+    }
+
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
     }
 
     public String getLicensePlate() {

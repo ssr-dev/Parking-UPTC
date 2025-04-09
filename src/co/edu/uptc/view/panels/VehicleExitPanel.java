@@ -1,4 +1,6 @@
 package co.edu.uptc.view.panels;
+import co.edu.uptc.presenter.Presenter;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -13,6 +15,7 @@ public class VehicleExitPanel extends JPanel {
     private JButton goBackWindow;
     private JLabel dateVehicleExit;
     private JButton searchPlate;
+    private Presenter presenter;
 
     public VehicleExitPanel() {
         JPanel formPanel = new JPanel(new GridBagLayout());
@@ -77,6 +80,10 @@ public class VehicleExitPanel extends JPanel {
     public void setDateVehicleExit(String date) {
         dateVehicleExit.setText("$ "+date);
     }
+
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
+    }
     
     private JLabel createLabel(String textLabel, int sizeLabel){
         JLabel label = new JLabel(textLabel);
@@ -102,13 +109,12 @@ public class VehicleExitPanel extends JPanel {
         return confirmExitButton;
     }
     
-    public void clearFields() {
+    public void cleanFields() {
         licensePlateField.setText("");
         elapsedTime.setText("");
         moneyReceived.setText("");
         
     }
-    
     
     public String getLicensePlate() {
         return licensePlateField.getText().trim();

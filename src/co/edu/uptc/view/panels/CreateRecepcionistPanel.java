@@ -95,9 +95,7 @@ public class CreateRecepcionistPanel extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == backButton){
-            presenter.backWindow();
         }if (e.getSource() == createButton){
-            presenter.createRecepcionist();
         }
     }
 

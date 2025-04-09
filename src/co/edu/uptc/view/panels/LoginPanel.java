@@ -13,7 +13,7 @@ public class LoginPanel extends JPanel implements ActionListener {
     private JButton loginButton;
     private Presenter presenter;
 
-    public LoginPanel(Presenter presenter) {
+    public LoginPanel() {
         setLayout(new GridBagLayout());
 
         Font titleFont = new Font("Arial", Font.BOLD, 40);
@@ -93,7 +93,6 @@ public class LoginPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginButton) {
             System.out.println("si se está haciendo");
-            presenter.login();
             System.out.println("si se está haciendo x2");
 
         }

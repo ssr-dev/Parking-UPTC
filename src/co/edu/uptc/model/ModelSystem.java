@@ -23,9 +23,9 @@ public class ModelSystem {
     }
 
     public boolean validateLogIn(String username, String password){
-            User user = searchUser(username, SEARCH_BY_USERNAME);
-            if (user != null) {
-                return user.getPassword().equals(password);
+
+            if (searchUser(username, SEARCH_BY_USERNAME)!= null) {
+                return searchUser(username, SEARCH_BY_USERNAME).getPassword().equals(password);
             }
             return false;
     }

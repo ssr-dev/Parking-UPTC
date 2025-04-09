@@ -16,60 +16,60 @@ public class ModelSystem {
     private final List<User> users;
     private User activeUser;
 
-    public ModelSystem (){
+    public ModelSystem() {
         parkings = new ArrayList<>();
         tickets = new ArrayList<>();
         users = new ArrayList<>();
     }
 
-    public boolean validateLogIn(String username, String password){
+    public boolean validateLogIn(String username, String password) {
 
-            if (searchUser(username, SEARCH_BY_USERNAME)!= null) {
-                return searchUser(username, SEARCH_BY_USERNAME).getPassword().equals(password);
-            }
-            return false;
+        if (searchUser(username, SEARCH_BY_USERNAME) != null) {
+            return searchUser(username, SEARCH_BY_USERNAME).getPassword().equals(password);
+        }
+        return false;
     }
 
-    public boolean validateLogInAdmin(String usernameU, String passwordU){
+    public boolean validateLogInAdmin(String usernameU, String passwordU) {
         boolean validateAdmin = false;
         String username = "Faustino_Ramirez";
-        String password = "HJ2EW3";
-        if (username.equals(usernameU) || password.equals(passwordU)){
+        String password = "dwe23";
+        if (username.equals(usernameU) && password.equals(passwordU)) {
             validateAdmin = true;
         }
         return validateAdmin;
     }
 
-    public User searchUser(String key, int searchMethod){
-        if(searchMethod == 0){
+    public User searchUser(String key, int searchMethod) {
+        if (searchMethod == 0) {
             for (User user : users) {
-                if (user.getUsername().equals(key)) { 
+                if (user.getUsername().equals(key)) {
                     return user;
                 }
             }
-        }else if (searchMethod == 1){
+        } else if (searchMethod == 1) {
             for (User user : users) {
                 if (user instanceof Receptionist r) {
-                    if (r.getId().equals(key)) { 
+                    if (r.getId().equals(key)) {
                         return r;
                     }
                 }
-            } 
-            
+            }
+
         }
 
         return null;
     }
 
-    public String createUsername(Receptionist r){
+    public String createUsername(Receptionist r) {
         String username = r.getFirstName() + "_" + r.getLastName();
         boolean unique = false;
         int index = 2;
 
-        while (unique == false) { 
+        while (unique == false) {
             if (!checkExistingUsername(username)) {
                 unique = true;
-            }else{
+            } else {
                 username = username + index;
                 index++;
             }
@@ -78,10 +78,10 @@ public class ModelSystem {
         return username;
     }
 
-    private boolean checkExistingUsername(String username){
+    private boolean checkExistingUsername(String username) {
         int index = 0;
-        while (index < this.users.size()) { 
-            if(this.users.get(index).getUsername().equals(username)){
+        while (index < this.users.size()) {
+            if (this.users.get(index).getUsername().equals(username)) {
                 return true;
             }
 
@@ -91,7 +91,7 @@ public class ModelSystem {
         return false;
     }
 
-    public String createPassword(){
+    public String createPassword() {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         SecureRandom random = new SecureRandom();
         StringBuilder password = new StringBuilder(PASSWORD_LENGHT);
@@ -104,7 +104,7 @@ public class ModelSystem {
         return password.toString();
     }
 
-    public List<Ticket> getReport(LocalDate date){
+    public List<Ticket> getReport(LocalDate date) {
         List<Ticket> report = new ArrayList<>();
 
         for (Ticket ticket : tickets) {
@@ -116,7 +116,7 @@ public class ModelSystem {
         return report;
     }
 
-    public List<Ticket> getReport(LocalDate date, Receptionist receptionist){
+    public List<Ticket> getReport(LocalDate date, Receptionist receptionist) {
         List<Ticket> report = new ArrayList<>();
 
         for (Ticket ticket : tickets) {
@@ -128,25 +128,39 @@ public class ModelSystem {
         return report;
     }
 
-    public List<Receptionist> getReportReceptionists(List<Ticket> report){
-        List<Receptionist> receptionists = new ArrayList<>();
-
-        String receptionistUsername = report.get(0).getReceptionist().getUsername();
-
-        for (Ticket ticket : report) {
-            if (ticket.getReceptionist().getUsername().equals(receptionistUsername)) {
-                receptionists.add(ticket.getReceptionist()); 
-            }
+    public Object[][] getReceptionistReportTable() {
+        List<Ticket> report = this.getTickets(); // Ajusta si necesitas filtrar por fecha
+        if (report.isEmpty()) {
+            return new Object[0][4];
         }
 
-        return receptionists;
+        String targetUsername = report.get(0).getReceptionist().getUsername();
+        Receptionist receptionist = report.get(0).getReceptionist();
+        int vehicleCount = 0;
+        double totalIncome = 0;
+
+        for (Ticket ticket : report) {
+            if (ticket.getReceptionist().getUsername().equals(targetUsername)) {
+                vehicleCount++;
+                totalIncome += ticket.getPrice(); // Asegúrate que ticket tenga getPrice()
+            }
+        }
+        return new Object[][]{
+                {
+                        receptionist.getFirstName(),
+                        receptionist.getLastName(),
+                        "$" + totalIncome,
+                        vehicleCount
+                }
+        };
     }
 
-    public int getTotalEntries(List<Ticket> records){
+
+    public int getTotalEntries(List<Ticket> records) {
         return records.size();
     }
 
-    public Double getTotalEarnings(List<Ticket> records){
+    public Double getTotalEarnings(List<Ticket> records) {
         Double earnings = 0.0;
 
         for (Ticket ticket : records) {
@@ -175,5 +189,5 @@ public class ModelSystem {
     public List<User> getUsers() {
         return users;
     }
-    
+
 }

@@ -84,7 +84,7 @@ public class LoginPanel extends JPanel implements ActionListener {
         return loginButton;
     }
 
-    public void clearFiles() {
+    public void cleanFiles() {
         txtUsername.setText("");
         txtPassword.setText("");
     }
@@ -92,9 +92,7 @@ public class LoginPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginButton) {
-            System.out.println("si se está haciendo");
-            System.out.println("si se está haciendo x2");
-
+            presenter.login();
         }
     }
 }

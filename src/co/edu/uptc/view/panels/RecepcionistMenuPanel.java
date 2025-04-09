@@ -17,7 +17,14 @@ public class RecepcionistMenuPanel extends MenuPanel {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        String command = e.getActionCommand();
+        if (command.equals("Registrar ingreso de vehículo")) {
+            presenter.openVehiceEntry();
+        } else if (command.equals("Registrar salida de vehículo")) {
+            presenter.openVehicleExit();
+        } else if (command.equals("Consultar espacios disponibles")) {
+            presenter.openAvaliblesSpaces();
+        }
     }
 }
 

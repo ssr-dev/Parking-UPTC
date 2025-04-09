@@ -17,7 +17,17 @@ public class AdminMenuPanel extends MenuPanel {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        String command = e.getActionCommand();
+        if (command.equals("Crear recepcionista")) {
+            presenter.openCreateRecepcionist();
+        } else if (command.equals("Registrar parqueadero")) {
+            presenter.openCreateParking();
+        } else if (command.equals("Cambiar credenciales del recepcionista")) {
+            presenter.openChangeCredentials();
+        } else if (command.equals("Generar reporte de ventas")) {
+            presenter.generateReport();
+        }
     }
+
 }
 

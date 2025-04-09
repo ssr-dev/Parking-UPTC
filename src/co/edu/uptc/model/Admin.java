@@ -9,9 +9,18 @@ public class Admin extends User{
         super(objSystem);
     }
 
-    public void createNewParking(String name, String address, int totalLots, Double priceByHour, List<Schedule> schedules){
-        Parking parking = new Parking(objSystem, name, address, totalLots, priceByHour, schedules);
-        objSystem.getParkings().add(parking);
+    public boolean createNewParking(String name, String address, int totalLots, Double priceByHour, List<Schedule> schedules) {
+        boolean result = false;
+        if (name != null && name.matches("^[A-ZÁÉÍÓÚÑa-záéíóúñ0-9 ]{3,50}$")
+                && address != null && address.matches("^[A-ZÁÉÍÓÚÑa-záéíóúñ0-9 #\\-]{5,100}$")
+                && priceByHour != null && priceByHour > 0
+                && totalLots > 0
+                && schedules != null && !schedules.isEmpty()) {
+            Parking parking = new Parking(objSystem, name, address, totalLots, priceByHour, schedules);
+            objSystem.getParkings().add(parking);
+            result = true;
+        }
+        return result;
     }
 
     public void createNewReceptionist(String id, String firstName, String lastName, String phoneNumber, String address,Parking assignedParking){
@@ -36,7 +45,6 @@ public class Admin extends User{
         if (newPassword.equals(previousPassword)){
             return false;
         }
-        
         String pattern = "^[a-zA-Z0-9]{1,8}$";
         return Pattern.matches(pattern, newPassword);
     }

@@ -56,7 +56,6 @@ public abstract class MenuPanel extends JPanel implements ActionListener {
         logoutButton.addActionListener(e -> logout());
         bottomPanel.add(logoutButton);
         add(bottomPanel, BorderLayout.SOUTH);
-
         setupButtons();
     }
 
@@ -79,7 +78,7 @@ public abstract class MenuPanel extends JPanel implements ActionListener {
         ));
         buttonPanel.add(Box.createVerticalStrut(15));
         buttonPanel.add(button);
-        button.addActionListener(this); // se conecta al actionPerformed
+        button.addActionListener(this);
     }
 
     private JLabel createImageLabel(String path) {
@@ -98,6 +97,7 @@ public abstract class MenuPanel extends JPanel implements ActionListener {
 
     protected void logout() {
         if (presenter != null) {
+            presenter.openLogin();
         }
     }
 }

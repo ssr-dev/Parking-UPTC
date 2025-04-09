@@ -3,10 +3,10 @@ package co.edu.uptc.view;
 import javax.swing.*;
 import java.awt.*;
 
-public class JOptionMessages {
+public class jOptionMessages {
     private Component parent;
 
-    public JOptionMessages(Component parent){
+    public jOptionMessages(Component parent){
         this.parent = parent;
     }
 

@@ -11,6 +11,8 @@ public class ParkingView extends JFrame {
     private JPanel mainPanel;
     private Presenter presenter;
     private LoginPanel loginPanel;
+    private int avaliblesSpaces;
+    private boolean isAvailable;
     private RecepcionistMenuPanel recepcionistMenuPanel;
     private AdminMenuPanel adminMenuPanel;
     private CreateRecepcionistPanel createRecepcionistPanel;
@@ -37,25 +39,18 @@ public class ParkingView extends JFrame {
         addPanels();
     }
 
-    private void createPanels(){
+    private void createPanels() {
         loginPanel = new LoginPanel();
-        loginPanel.setPresenter(presenter);
         recepcionistMenuPanel = new RecepcionistMenuPanel();
-        recepcionistMenuPanel.setPresenter(presenter);
         adminMenuPanel = new AdminMenuPanel();
-        adminMenuPanel.setPresenter(presenter);
         createRecepcionistPanel = new CreateRecepcionistPanel();
-        createRecepcionistPanel.setPresenter(presenter);
         vehicleEntryPanel = new VehicleEntryPanel();
-        vehicleEntryPanel.setPresenter(presenter);
         vehicleExitPanel = new VehicleExitPanel();
-        vehicleExitPanel.setPresenter(presenter);
-        parkingSpacesPanel = new ParkingSpacesPanel(0,false);
-        parkingSpacesPanel.setPresenter(presenter);
+        parkingSpacesPanel = new ParkingSpacesPanel(avaliblesSpaces, isAvailable);
         modifySchedulePanel = new ModifySchedulePanel();
-        modifySchedulePanel.setPresenter(presenter);
         registerParkingPanel = new RegisterParkingPanel();
-        registerParkingPanel.setPresenter(presenter);
+        changeCredentials = new ChangeCredentialsPanel();
+        generateReport = new GenerateReportPanel();
     }
 
     public void showPanel(String panelName) {
@@ -63,7 +58,7 @@ public class ParkingView extends JFrame {
     }
 
     private void addPanels() {
-        mainPanel.add(loginPanel, "loginPanel");
+        mainPanel.add(loginPanel, "LoginPanel");
         mainPanel.add(recepcionistMenuPanel, "recepcionistMenuPanel");
         mainPanel.add(adminMenuPanel, "adminMenuPanel");
         mainPanel.add(createRecepcionistPanel, "createRecepcionistPanel");
@@ -74,8 +69,27 @@ public class ParkingView extends JFrame {
         mainPanel.add(registerParkingPanel, "registerParkingPanel");
     }
 
-    public void setPresenter(Presenter presenter) {
+    public void setPresenters(Presenter presenter) {
         this.presenter = presenter;
+        loginPanel.setPresenter(presenter);
+        recepcionistMenuPanel.setPresenter(presenter);
+        adminMenuPanel.setPresenter(presenter);
+        createRecepcionistPanel.setPresenter(presenter);
+        parkingSpacesPanel.setPresenter(presenter);
+        modifySchedulePanel.setPresenter(presenter);
+        vehicleEntryPanel.setPresenter(presenter);
+        vehicleExitPanel.setPresenter(presenter);
+        registerParkingPanel.setPresenter(presenter);
+        changeCredentials.setPresenter(presenter);
+        generateReport.setPresenter(presenter);
+    }
+
+    public void setAvaliblesSpaces(int avaliblesSpaces) {
+        this.avaliblesSpaces = avaliblesSpaces;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 
     public LoginPanel getLoginPanel() {
@@ -114,6 +128,12 @@ public class ParkingView extends JFrame {
         return registerParkingPanel;
     }
 
+    public ChangeCredentialsPanel getChangeCredentials() {
+        return changeCredentials;
+    }
 
+    public GenerateReportPanel getGenerateReport() {
+        return generateReport;
+    }
 }
 
